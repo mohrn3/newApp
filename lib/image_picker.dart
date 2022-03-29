@@ -109,7 +109,7 @@ class _Uploader extends State<Uploader> {
                           ),
                         )),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(00, 150, 00, 20),
+                      padding: const EdgeInsets.fromLTRB(00, 107, 00, 20),
                       child: Container(
                         color: Colors.black,
                         height: 100,
