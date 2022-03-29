@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:newnokosuios/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class AnimatedScreen extends StatefulWidget {
+  const AnimatedScreen({Key? key}) : super(key: key);
+
   @override
   _AnimatedScreenState createState() => _AnimatedScreenState();
 }
 
 class _AnimatedScreenState extends State<AnimatedScreen> {
-  LiquidController _liquidController = LiquidController();
+  final LiquidController _liquidController = LiquidController();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        // body: Builder(
-        //   builder: (context) => LiquidSwipe(
-        // body: LiquidSwipe(
-        // pages: pages,
         body: LiquidSwipe(
           pages: [
             Container(
@@ -87,7 +86,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                         textColor: Colors.white,
                         onPressed: () => {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context1) => ImagePicker())),
+                              builder: (context1) => Uploader())),
                         },
                         child: Text('Skip'),
                       ),
@@ -167,7 +166,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                         textColor: Colors.white,
                         onPressed: () => {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context1) => ImagePicker())),
+                              builder: (context1) => Uploader())),
                         },
                         child: Text('Skip'),
                       ),
@@ -185,7 +184,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
               //         colors: [Colors.pink.shade400, Colors.deepPurple])),
               child: Column(
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 30.0,
                   ),
                   Container(
@@ -212,7 +211,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                     child: Text(
-                      "Nokosu helps you capture the moments with ease ",
+                      "Nokosu helps you capture the moments with ease                                             ",
                       // style: GoogleFonts.itim(
                       //   fontSize: 18.0,
                       // ),
@@ -240,7 +239,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                         textColor: Colors.white,
                         onPressed: () => {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context1) => ImagePicker())),
+                              builder: (context1) => Uploader())),
                         },
                         child: Text('Skip'),
                       ),
@@ -275,10 +274,58 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                 ],
               ),
             ),
+
+            // Container(
+            //   decoration: BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     color: Colors.black,
+
+            //   ),
+            //   child: Icon(
+            //     Icons.arrow_left,
+            //     color: Colors.white,
+            //   ),
+
+            // ),
           ),
         ),
         // ),
       ),
     );
   }
+
+  // nextpage() {
+  //   // Navigator.of(context)
+  //   //     .push(MaterialPageRoute(builder: (context) => AnimatedScreen()));
+  //   // return Container();
+
+  //   return MultiProvider(
+  //     providers: [
+  //       ChangeNotifierProvider(
+  //         create: (context) => LoginController(),
+  //         child: LoginPage(),
+
+  //         // child: MainPage(),
+  //       )
+  //     ],
+  //     child: MaterialApp(
+  //       debugShowCheckedModeBanner: false,
+
+  //       home: (BeforeLoginPage),
+
+  //       // AnimatedSplashScreen(
+  //       //   splash: Lottie.asset(
+  //       //     'assets/74423-photography.json',
+  //       //   ),
+  //       //   // nextScreen: MainPage(),
+  //       //   nextScreen: LoginPage(),
+  //       //   splashTransition: SplashTransition.fadeTransition,
+  //       //   backgroundColor: Colors.lightGreen,
+  //       //   duration: 1550,
+  //       // ),
+  //       // locale: DevicePreview.locale(context), // Add the locale here
+  //       // builder: DevicePreview.appBuilder, // Add the builder here
+  //     ),
+  //   );
+  // }
 }
