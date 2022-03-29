@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -29,6 +30,7 @@ class _Uploader extends State<Uploader> {
   // late Address address;
 
   Map<String, double> currentLocation = {};
+  TextEditingController personController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   ImagePicker imagePicker = ImagePicker();
@@ -110,7 +112,9 @@ class _Uploader extends State<Uploader> {
                         )),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(00, 107, 00, 20),
+
                       child: Container(
+                        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                         color: Colors.black,
                         height: 100,
                         // decoration: BoxDecoration(
@@ -119,46 +123,68 @@ class _Uploader extends State<Uploader> {
                         //         end: Alignment.bottomRight,
                         //         colors: [Colors.green, Colors.blue])),
 
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Expanded(
-                                child: IconButton(
-                                  icon: const ImageIcon(
-                                    AssetImage('assets/cam.png'),
-                                    size: 250,
-                                    color: Colors.white,
+                        child: IntrinsicHeight(
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      IconButton(
+                                        icon: const ImageIcon(
+                                          AssetImage('assets/cam.png'),
+                                          // fit: BoxFit.contain,
+                                          size: 500,
+                                          color: Colors.white,
+                                        ),
+
+                                        color: Colors.white,
+                                        hoverColor: Colors.green.shade600,
+                                        alignment: Alignment.center,
+                                        onPressed: () => getImage(
+                                            source: ImageSource.camera),
+                                        // child: const Text('Capture Image',
+                                        //     style: TextStyle(fontSize: 18))
+                                      ),
+                                      const Text("Take a photo",
+                                          style: TextStyle(
+                                              fontSize: 8,
+                                              color: Colors.white)),
+                                    ],
                                   ),
-                                  color: Colors.white,
-                                  hoverColor: Colors.green.shade600,
-                                  alignment: Alignment.center,
-                                  onPressed: () =>
-                                      getImage(source: ImageSource.camera),
-                                  // child: const Text('Capture Image',
-                                  //     style: TextStyle(fontSize: 18))
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              Expanded(
-                                child: IconButton(
-                                  icon: const ImageIcon(
-                                    AssetImage('assets/gal.png'),
-                                    size: 250,
-                                    color: Colors.white,
+                                const VerticalDivider(
+                                  color: Colors.white,
+                                  thickness: 0.7,
+                                  endIndent: sqrt1_2,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      IconButton(
+                                        icon: const ImageIcon(
+                                          AssetImage('assets/gal.png'),
+                                          size: 250,
+                                          color: Colors.white,
+                                        ),
+                                        color: Colors.white,
+                                        hoverColor: Colors.green.shade600,
+                                        alignment: Alignment.center,
+                                        onPressed: () => getImage(
+                                            source: ImageSource.gallery),
+                                        // child: const Text('Capture Image',
+                                        //     style: TextStyle(fontSize: 18))
+                                      ),
+                                      const Text("Select from gallery",
+                                          style: TextStyle(
+                                              fontSize: 8,
+                                              color: Colors.white)),
+                                    ],
                                   ),
-                                  color: Colors.white,
-                                  hoverColor: Colors.green.shade600,
-                                  alignment: Alignment.center,
-                                  onPressed: () =>
-                                      getImage(source: ImageSource.gallery),
-                                  // child: const Text('Capture Image',
-                                  //     style: TextStyle(fontSize: 18))
-                                ),
-                              )
-                            ]),
+                                )
+                              ]),
+                        ),
                       ), //Container
                     ),
                     Padding(
@@ -181,7 +207,7 @@ class _Uploader extends State<Uploader> {
                               height: 10,
                             ),
                             const Text(
-                              "Powered by Future University Hakodate, Japan",
+                              "Powered by GlobalDesign@2021 Future University Hakodate, Japan",
                               style: TextStyle(fontSize: 8),
                             ),
                           ],
@@ -221,6 +247,7 @@ class _Uploader extends State<Uploader> {
             children: <Widget>[
               PostForm(
                 imageFile: file,
+                personController: personController,
                 descriptionController: descriptionController,
                 locationController: locationController,
                 loading: uploading,
@@ -295,11 +322,7 @@ class _Uploader extends State<Uploader> {
 
   void getImage({required ImageSource source}) async {
     PickedFile? imageFile = await ImagePicker().getImage(
-        source: source,
-        maxWidth: 640,
-        maxHeight: 480,
-        imageQuality: 70 //0 - 100
-        );
+        source: source, maxWidth: 1920, maxHeight: 1200, imageQuality: 80);
 
     if (imageFile?.path != null) {
       setState(() {
@@ -435,7 +458,7 @@ class _Uploader extends State<Uploader> {
                       ),
                       RoundedLoadingButton(
                         child: const Text('Done',
-                            style: TextStyle(color: Colors.yellow)),
+                            style: TextStyle(color: Colors.white)),
                         controller: _btnController,
                         onPressed: () => _doSomethingkj(
                             Cultural, Physical, Emotional, Position),
@@ -478,6 +501,7 @@ class _Uploader extends State<Uploader> {
 
     final String imgString = base64String;
     final String description = descriptionController.text;
+    final String person = personController.text;
     final String location = locationController.text;
     // final String text3 = text;
     final String boolValue = boolVal.toString();
@@ -490,6 +514,7 @@ class _Uploader extends State<Uploader> {
       MaterialPageRoute(
           builder: (context) => CardDesign(
                 img_string: imgString,
+                person: person,
                 description: description,
                 location: location,
                 Phy: boolPhy,
@@ -511,12 +536,14 @@ class PostForm extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   // final imageFile;
   final imageFile;
+  final TextEditingController personController;
   final TextEditingController descriptionController;
   final TextEditingController locationController;
   final bool loading;
   // ignore: use_key_in_widget_constructors
   const PostForm(
       {this.imageFile,
+      required this.personController,
       required this.descriptionController,
       required this.loading,
       required this.locationController});
@@ -541,6 +568,18 @@ class PostForm extends StatelessWidget {
               alignment: FractionalOffset.center,
               image: FileImage(imageFile),
             )),
+          ),
+        ),
+        const Divider(),
+        ListTile(
+          leading: const Icon(Icons.person),
+          title: SizedBox(
+            width: 250.0,
+            child: TextField(
+              controller: personController,
+              decoration: const InputDecoration(
+                  hintText: "Display name", border: InputBorder.none),
+            ),
           ),
         ),
         const Divider(),

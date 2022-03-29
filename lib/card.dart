@@ -20,6 +20,7 @@ class CardDesign extends StatefulWidget {
   // final File ;
 
   final img_string;
+  final person;
   final description;
   final location;
   final Phy;
@@ -31,6 +32,7 @@ class CardDesign extends StatefulWidget {
 
   CardDesign(
       {this.img_string,
+      this.person,
       this.description,
       this.location,
       this.Phy,
@@ -103,6 +105,7 @@ class _CardDesignState extends State<CardDesign> {
     var cardImage =
         NetworkImage('https://source.unsplash.com/random/800x600?house');
     var supportingText = widget.description;
+    var username = widget.person;
 
     return Card(
       color: Colors.white,
@@ -147,30 +150,30 @@ class _CardDesignState extends State<CardDesign> {
                     // color: Colors.grey.shade200,
                     // width: MediaQuery.of(context).size.width * 0.8,
                     height: 32.0,
-                    // child: Row(
-                    //   children: [
-                    //     // Align(
-                    //     //   child: CircleAvatar(
-                    //     //     backgroundImage:
-                    //     //         Image.network(model.userDetails!.photoURL ?? "")
-                    //     //             .image,
-                    //     //     radius: 22,
-                    //     //   ),
-                    //     // ),
-                    //     // SizedBox(
-                    //     //   //Use of SizedBox
-                    //     //   width: 10,
-                    //     // ),
-                    //     Align(
-                    //       alignment: Alignment.center,
-                    //       child: Text(UserName1,
-                    //           style: const TextStyle(
-                    //               color: Colors.black,
-                    //               fontSize: 15,
-                    //               fontWeight: FontWeight.bold)),
-                    //     ),
-                    //   ],
-                    // ),
+                    child: Row(
+                      children: [
+                        // Align(
+                        //   child: CircleAvatar(
+                        //     backgroundImage:
+                        //         Image.network(model.userDetails!.photoURL ?? "")
+                        //             .image,
+                        //     radius: 22,
+                        //   ),
+                        // ),
+                        // SizedBox(
+                        //   //Use of SizedBox
+                        //   width: 10,
+                        // ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(username,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.normal)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
 
