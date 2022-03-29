@@ -81,7 +81,6 @@ class _Uploader extends State<Uploader> {
                             ),
                           ),
                         )),
-
                     Padding(
                         padding: const EdgeInsets.fromLTRB(00, 0, 0, 0),
                         child: SizedBox(
@@ -106,17 +105,14 @@ class _Uploader extends State<Uploader> {
                                 RotateAnimatedText('NOKOSU 앱에 오신 것을 환영합니다. '),
                                 RotateAnimatedText('欢迎使用 NOKOSU 应用程序。'),
                               ],
-                              // onTap: () {
-                              //   print("Tap Event");
-                              // },
                             ),
                           ),
                         )),
-
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(00, 50, 00, 20),
+                      padding: const EdgeInsets.fromLTRB(00, 150, 00, 20),
                       child: Container(
-                        color: Colors.white,
+                        color: Colors.black,
+                        height: 100,
                         // decoration: BoxDecoration(
                         //     gradient: LinearGradient(
                         //         begin: Alignment.topLeft,
@@ -128,95 +124,66 @@ class _Uploader extends State<Uploader> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Expanded(
-                                child: ElevatedButton(
-                                    onPressed: () =>
-                                        getImage(source: ImageSource.camera),
-                                    child: const Text('Capture Image',
-                                        style: TextStyle(fontSize: 18))),
+                                child: IconButton(
+                                  icon: const ImageIcon(
+                                    AssetImage('assets/cam.png'),
+                                    size: 250,
+                                    color: Colors.white,
+                                  ),
+                                  color: Colors.white,
+                                  hoverColor: Colors.green.shade600,
+                                  alignment: Alignment.center,
+                                  onPressed: () =>
+                                      getImage(source: ImageSource.camera),
+                                  // child: const Text('Capture Image',
+                                  //     style: TextStyle(fontSize: 18))
+                                ),
                               ),
                               const SizedBox(
                                 width: 20,
                               ),
                               Expanded(
-                                child: ElevatedButton(
-                                    onPressed: () =>
-                                        getImage(source: ImageSource.gallery),
-                                    child: const Text('Select Image',
-                                        style: TextStyle(fontSize: 18))),
+                                child: IconButton(
+                                  icon: const ImageIcon(
+                                    AssetImage('assets/gal.png'),
+                                    size: 250,
+                                    color: Colors.white,
+                                  ),
+                                  color: Colors.white,
+                                  hoverColor: Colors.green.shade600,
+                                  alignment: Alignment.center,
+                                  onPressed: () =>
+                                      getImage(source: ImageSource.gallery),
+                                  // child: const Text('Capture Image',
+                                  //     style: TextStyle(fontSize: 18))
+                                ),
                               )
                             ]),
                       ), //Container
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: Container(
-                    //       child: RoundedLoadingButton(
-                    //           child: Text('Make a Tour',
-                    //               style: TextStyle(color: Colors.black)),
-                    //           controller: _btnController,
-                    //           onPressed: () => {
-                    //                 Navigator.of(context).push(
-                    //                     MaterialPageRoute(
-                    //                         builder: (context) =>
-                    //                             AnimatedScreen())),
-                    //               })),
-                    //   // child: Container(
-                    //   //   decoration: BoxDecoration(
-                    //   //     shape: BoxShape.circle,
-                    //   //     color: Colors.black,
-                    //   //   ),
-                    //   //   child: Icon(
-                    //   //     Icons.arrow_right,
-                    //   //     color: Colors.white,
-
-                    //   //   ),
-                    //   // ),
-                    // ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
                       child: Container(
                         // margin: EdgeInsets.only(
                         //     left: 0.0, top: 60.0, right: 0.0, bottom: 0.0),
-                        width: 100,
-                        height: 40,
-                        child: Row(
+
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Image.asset(
                               'assets/fun.png',
                               fit: BoxFit.contain,
+                              width: 50,
+                              height: 25,
                             ),
                             const SizedBox(
-                              width: 10,
+                              height: 10,
                             ),
-                            Image.asset(
-                              'assets/globaldesign.png',
-                              fit: BoxFit.contain,
-                              alignment: Alignment.center,
+                            const Text(
+                              "Powered by Future University Hakodate, Japan",
+                              style: TextStyle(fontSize: 8),
                             ),
-
-                            // Container(
-                            //   // width: 100,
-                            //   // height: 35,
-                            //   alignment: Alignment.centerLeft,
-                            //   child: Image.asset(
-                            //     'assets/fun.png',
-                            //     fit: BoxFit.contain,
-                            //   ),
-                            // ),
-                            // SizedBox(
-                            //   width: 10,
-                            // ),
-                            // Container(
-                            //   width: 80,
-                            //   height: 80,
-                            //   alignment: Alignment.centerRight,
-                            //   child: Image.asset(
-                            //     'assets/globaldesign.png',
-                            //     fit: BoxFit.contain,
-                            //   ),
-                            // ),
                           ],
                         ),
                       ),
