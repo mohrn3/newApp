@@ -32,41 +32,16 @@ class SplashPage extends StatelessWidget {
         color: Colors.white,
         child: AnimatedSplashScreen(
           splash: const ImageIcon(
-            AssetImage("assets/black_name.png"), size: 500.0,
-            // splash: Lottie.asset(
-            //   'assets/74423-photography.json',
+            AssetImage("assets/black_name.png"),
+            size: 500.0,
           ),
           nextScreen: const AnimatedScreen(),
-          // nextScreen: LoginPage(),
           splashTransition: SplashTransition.fadeTransition,
           splashIconSize: 200.0,
           backgroundColor: Colors.transparent,
           duration: 1550,
         ),
-
-        // const Center(
-        //   child: ImageIcon(
-        //     AssetImage("assets/black_name.png"),
-        //     size: 200.0,
-        //   ),
-        // ),
       ),
     );
-
-    // return AnimatedSplashScreen(
-    //   splash: const ImageIcon(
-    //     AssetImage("assets/black_name.png"),
-    //     size: 500.0,
-    //     // splash: Lottie.asset(
-    //     //   'assets/74423-photography.json',
-    //   ),
-    //   // nextScreen: ImagePicker(),
-    //   nextScreen: AnimatedScreen(),
-
-    //   splashTransition: SplashTransition.fadeTransition,
-    //   splashIconSize: 200.0,
-    //   backgroundColor: Colors.transparent,
-    //   duration: 1550,
-    // );
   }
 }
