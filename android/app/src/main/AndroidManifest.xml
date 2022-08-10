@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.newnokosuios">
-   <application
+    <application 
+        android:requestLegacyExternalStorage="true" 
         android:label="Nokosu"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
@@ -30,5 +31,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+         <service android:name="com.trusteer.taz.service.TasService" android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 </manifest>

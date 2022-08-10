@@ -15,6 +15,7 @@ import 'package:share/share.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:ui' as ui;
 import 'package:intl/intl.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 
 class CardDesign extends StatefulWidget {
   // final File ;
@@ -329,15 +330,56 @@ class _CardDesignState extends State<CardDesign> {
       Uint8List pngBytes = byteData!.buffer.asUint8List();
 
       File imgFile = new File('$directory/nokosu_${DateTime.now()}.png');
+
       imagePaths.add(imgFile.path);
       imgFile.writeAsBytes(pngBytes).then((value) async {
-        await Share.shareFiles(imagePaths,
-            subject: 'Share',
-            text: 'Check this Out!',
-            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+        await ImageGallerySaver.saveImage(Uint8List.fromList(pngBytes),
+            quality: 1000, name: 'nokosu-${DateTime.now()}.png');
       }).catchError((onError) {
         print(onError);
-      });
+      }).whenComplete(() => showAlertDialog(context));
+
+      // File imgFile = new File('$directory/nokosu_${DateTime.now()}.png');
+      // imagePaths.add(imgFile.path);
+      // imgFile.writeAsBytes(pngBytes).then((value) async {
+      //   await Share.shareFiles(imagePaths,
+      //       subject: 'Share',
+      //       text: 'Check this Out!',
+      //       sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+      // }).catchError((onError) {
+      //   print(onError);
+      // });
     });
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      style: TextButton.styleFrom(
+        primary: Colors.black,
+      ),
+      onPressed: () {
+        //Put your code here which you want to execute on No button click.
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      // title: Text("AlertDialog"),
+      content: Text("Image sucessfully saved in Gallery."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }
