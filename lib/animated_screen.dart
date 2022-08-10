@@ -23,20 +23,12 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
           pages: [
             Container(
               color: Colors.white,
-              // decoration: BoxDecoration(
-              //     gradient: LinearGradient(
-              //         begin: Alignment.topLeft,
-              //         end: Alignment.bottomRight,
-              //         colors: [Colors.white])),
               child: Column(
                 children: [
                   SizedBox(
                     height: 30.0,
                   ),
                   Container(
-                    // height: 400,
-                    // width: 300,
-
                     height: MediaQuery.of(context).size.height * 0.5,
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Image.asset('assets/comment.png'),
@@ -50,7 +42,6 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                       color: Colors.black,
                       fontSize: 18,
                     ),
-                    // style: GoogleFonts.itim(fontSize: 24.0),
                   ),
                   SizedBox(
                     height: 20.0,
@@ -59,9 +50,6 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                     padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                     child: Text(
                       "Save your thoughts, impressions and emotions together with the photo to look back anytime.",
-                      // style: GoogleFonts.itim(
-                      //   fontSize: 18.0,
-                      // ),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 14,
@@ -74,15 +62,9 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   ),
                   Container(
                     color: Colors.black,
-                    // decoration: BoxDecoration(
-                    //     gradient: LinearGradient(
-                    //         begin: Alignment.topLeft,
-                    //         end: Alignment.bottomRight,
-                    //         colors: [Colors.orange.shade400, Colors.blue])),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                       child: FlatButton(
-                        // color: Colors.teal,
                         textColor: Colors.white,
                         onPressed: () => {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -97,25 +79,15 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
             ),
             Container(
               color: Colors.white,
-              // decoration: BoxDecoration(
-              //     gradient: LinearGradient(
-              //         begin: Alignment.topLeft,
-              //         end: Alignment.bottomRight,
-              //         colors: [Colors.green.shade400, Colors.blue.shade400])),
               child: Column(
                 children: [
                   SizedBox(
                     height: 30.0,
                   ),
                   Container(
-                    // height: MediaQuery.of(context).size.height * 0.5,
-                    // width: MediaQuery.of(context).size.width * 0.8,
-                    // height: 400,
-                    // width: 300,
                     height: MediaQuery.of(context).size.height * 0.5,
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Image.asset('assets/selection.png'),
-                    // child: Image.asset('assets/3trans.png'),
                   ),
                   SizedBox(
                     height: 30.0,
@@ -126,9 +98,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                       color: Colors.black,
                       fontSize: 18,
                     ),
-
                     textAlign: TextAlign.center,
-                    // style: GoogleFonts.itim(fontSize: 24.0, color: Colors.white),
                   ),
                   SizedBox(
                     height: 20.0,
@@ -137,8 +107,6 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                     padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                     child: Text(
                       "Label your captures with icons to help you categorize                                      ",
-                      // style: GoogleFonts.itim(fontSize: 18.0, color: Colors.white),
-                      // textAlign: TextAlign.center
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 14,
@@ -151,14 +119,6 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   ),
                   Container(
                     color: Colors.black,
-                    // decoration: BoxDecoration(
-                    //     gradient: LinearGradient(
-                    //         begin: Alignment.topLeft,
-                    //         end: Alignment.bottomRight,
-                    //         colors: [
-                    //       Colors.green.shade400,
-                    //       Colors.blue.shade400
-                    //     ])),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                       child: FlatButton(
@@ -177,19 +137,12 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
             ),
             Container(
               color: Colors.white,
-              // decoration: BoxDecoration(
-              //     gradient: LinearGradient(
-              //         begin: Alignment.topLeft,
-              //         end: Alignment.bottomRight,
-              //         colors: [Colors.pink.shade400, Colors.deepPurple])),
               child: Column(
                 children: [
                   SizedBox(
                     height: 30.0,
                   ),
                   Container(
-                    // height: 400,
-                    // width: 300,
                     height: MediaQuery.of(context).size.height * 0.5,
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Image.asset('assets/card.png'),
@@ -199,7 +152,6 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   ),
                   Text(
                     "Resulting Look",
-                    // style: GoogleFonts.itim(fontSize: 24.0),
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
@@ -212,9 +164,6 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                     padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                     child: Text(
                       "Nokosu helps you capture the moments with ease                                             ",
-                      // style: GoogleFonts.itim(
-                      //   fontSize: 18.0,
-                      // ),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 14,
@@ -227,15 +176,9 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   ),
                   Container(
                     color: Colors.black,
-                    // decoration: BoxDecoration(
-                    // gradient: LinearGradient(
-                    //     begin: Alignment.topLeft,
-                    //     end: Alignment.bottomRight,
-                    //     colors: [Colors.pink.shade400, Colors.deepPurple])),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                       child: FlatButton(
-                        // color: Colors.teal,
                         textColor: Colors.white,
                         onPressed: () => {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -274,58 +217,10 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                 ],
               ),
             ),
-
-            // Container(
-            //   decoration: BoxDecoration(
-            //     shape: BoxShape.circle,
-            //     color: Colors.black,
-
-            //   ),
-            //   child: Icon(
-            //     Icons.arrow_left,
-            //     color: Colors.white,
-            //   ),
-
-            // ),
           ),
         ),
         // ),
       ),
     );
   }
-
-  // nextpage() {
-  //   // Navigator.of(context)
-  //   //     .push(MaterialPageRoute(builder: (context) => AnimatedScreen()));
-  //   // return Container();
-
-  //   return MultiProvider(
-  //     providers: [
-  //       ChangeNotifierProvider(
-  //         create: (context) => LoginController(),
-  //         child: LoginPage(),
-
-  //         // child: MainPage(),
-  //       )
-  //     ],
-  //     child: MaterialApp(
-  //       debugShowCheckedModeBanner: false,
-
-  //       home: (BeforeLoginPage),
-
-  //       // AnimatedSplashScreen(
-  //       //   splash: Lottie.asset(
-  //       //     'assets/74423-photography.json',
-  //       //   ),
-  //       //   // nextScreen: MainPage(),
-  //       //   nextScreen: LoginPage(),
-  //       //   splashTransition: SplashTransition.fadeTransition,
-  //       //   backgroundColor: Colors.lightGreen,
-  //       //   duration: 1550,
-  //       // ),
-  //       // locale: DevicePreview.locale(context), // Add the locale here
-  //       // builder: DevicePreview.appBuilder, // Add the builder here
-  //     ),
-  //   );
-  // }
 }
