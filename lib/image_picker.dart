@@ -86,11 +86,12 @@ class _Uploader extends State<Uploader> {
                     Padding(
                         padding: const EdgeInsets.fromLTRB(00, 0, 0, 0),
                         child: SizedBox(
+
                           width: 250.0,
                           height: 20,
                           child: DefaultTextStyle(
                             style: const TextStyle(
-                              color: Colors.black87,
+                              color: Colors.black,
                               fontSize: 12.0,
                             ),
                             child: AnimatedTextKit(
@@ -111,78 +112,56 @@ class _Uploader extends State<Uploader> {
                           ),
                         )),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(00, 107, 00, 20),
+                      padding: const EdgeInsets.fromLTRB(0, 107,0, 20),
 
                       child: Container(
                         padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                        color: Colors.black,
+                        // color: Color(0xffffcabf),
                         height: 100,
-                        // decoration: BoxDecoration(
-                        //     gradient: LinearGradient(
-                        //         begin: Alignment.topLeft,
-                        //         end: Alignment.bottomRight,
-                        //         colors: [Colors.green, Colors.blue])),
-
+                        width: 300,
                         child: IntrinsicHeight(
-                          child: Row(
+                          child: Row(//水平に並べる
+                          
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 Expanded(
-                                  child: Column(
-                                    children: [
-                                      IconButton(
-                                        icon: const ImageIcon(
-                                          AssetImage('assets/cam.png'),
-                                          // fit: BoxFit.contain,
-                                          size: 500,
-                                          color: Colors.white,
-                                        ),
 
-                                        color: Colors.white,
-                                        hoverColor: Colors.green.shade600,
-                                        alignment: Alignment.center,
-                                        onPressed: () => getImage(
-                                            source: ImageSource.camera),
-                                        // child: const Text('Capture Image',
-                                        //     style: TextStyle(fontSize: 18))
-                                      ),
-                                      const Text("Take a photo",
-                                          style: TextStyle(
-                                              fontSize: 8,
-                                              color: Colors.white)),
-                                    ],
-                                  ),
-                                ),
-                                const VerticalDivider(
-                                  color: Colors.white,
-                                  thickness: 0.7,
-                                  endIndent: sqrt1_2,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      IconButton(
-                                        icon: const ImageIcon(
+                      child: ElevatedButton.icon(
+                      icon: Icon(Icons.camera_alt),  //icon data for elevated button
+                      label: Text("Take a Photo"), //label text 
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.black,
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      onPressed: () => getImage(source: ImageSource.camera),
+                      ),
+                  ),
+
+                      Expanded(
+
+                      child: ElevatedButton.icon(
+                      icon: const ImageIcon(
                                           AssetImage('assets/gal.png'),
-                                          size: 250,
+                                          size: 25,
                                           color: Colors.white,
-                                        ),
-                                        color: Colors.white,
-                                        hoverColor: Colors.green.shade600,
-                                        alignment: Alignment.center,
-                                        onPressed: () => getImage(
+                                        ),  //icon data for elevated button
+                      label: Text("Select from gallery"), //label text 
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.black,
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      onPressed: () =>  getImage(
                                             source: ImageSource.gallery),
-                                        // child: const Text('Capture Image',
-                                        //     style: TextStyle(fontSize: 18))
-                                      ),
-                                      const Text("Select from gallery",
-                                          style: TextStyle(
-                                              fontSize: 8,
-                                              color: Colors.white)),
-                                    ],
-                                  ),
-                                )
+                      ),
+                  ),
+
                               ]),
                         ),
                       ), //Container
@@ -207,7 +186,7 @@ class _Uploader extends State<Uploader> {
                               height: 10,
                             ),
                             const Text(
-                              "Powered by GlobalDesign@2021 Future University Hakodate, Japan",
+                              "Powered by GlobalDesign@2022 Future University Hakodate, Japan",
                               style: TextStyle(fontSize: 8),
                             ),
                           ],
@@ -371,8 +350,8 @@ class _Uploader extends State<Uploader> {
                         value: true,
                         textOn: 'Positive',
                         textOff: 'Negative',
-                        colorOn: Colors.red[300],
-                        colorOff: Colors.blue.shade400,
+                        colorOn: Color(0xffff4b00),
+                        colorOff: Color(0xff4dc4ff),
                         iconOn: Icons.thumb_up_sharp,
                         iconOff: Icons.thumb_down,
                         textSize: 8,
@@ -403,7 +382,7 @@ class _Uploader extends State<Uploader> {
                             value: true,
                             textOn: 'Emotional',
                             textOff: 'Not-Selected',
-                            colorOn: Colors.red.shade300,
+                            colorOn: Color(0xffff8082),
                             colorOff: Colors.grey,
                             iconOn: Icons.favorite_border_rounded,
                             iconOff: Icons.favorite_border_rounded,
@@ -422,7 +401,7 @@ class _Uploader extends State<Uploader> {
                             value: true,
                             textOn: 'Physical',
                             textOff: 'Not-Selected',
-                            colorOn: Colors.blue[700],
+                            colorOn: Color(0xffff8082),
                             colorOff: Colors.grey,
                             iconOn: Icons.check_box_outline_blank_outlined,
                             iconOff: Icons.check_box_outline_blank_outlined,
@@ -442,7 +421,7 @@ class _Uploader extends State<Uploader> {
                         value: true,
                         textOn: 'Cultural',
                         textOff: 'Not-Selected',
-                        colorOn: Colors.teal,
+                        colorOn: Color(0xffff8082),
                         colorOff: Colors.grey,
                         iconOn: Icons.circle_outlined,
                         iconOff: Icons.circle_outlined,
@@ -565,7 +544,7 @@ class PostForm extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
               // fit: BoxFit.fill,
-              alignment: FractionalOffset.center,
+              alignment: FractionalOffset.center,//
               image: FileImage(imageFile),
             )),
           ),
@@ -592,13 +571,22 @@ class PostForm extends StatelessWidget {
             //   radius: 20,
             // ),
             SizedBox(
+
               width: 250.0,
-              child: TextField(
+              child:Container(
+                alignment: Alignment.centerLeft,
+                child: TextField(
                 controller: descriptionController,
                 decoration: const InputDecoration(
                     hintText: "Write a comment...", border: InputBorder.none),
-              ),
-            ),
+              )
+              )
+              
+              )
+              
+
+            
+            ,
           ],
         ),
         const Divider(),

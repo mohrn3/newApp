@@ -48,7 +48,7 @@ dependencies:
   line_icons:
   font_awesome_flutter: ^8.8.1
   location: ^4.1.1
-  geocoder: ^0.2.1
+  #geocoder: ^0.2.1
   uuid: ^3.0.1
   screenshot: ^1.2.3
   share: ^2.0.4
@@ -60,7 +60,7 @@ dependencies:
   intl: ^0.17.0
   path:
   file_chooser:
-  dio: ^3.0.10
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

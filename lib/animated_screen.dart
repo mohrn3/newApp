@@ -16,6 +16,11 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
 
   @override
   Widget build(BuildContext context) {
+    body :style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            ),
+                          );
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -60,18 +65,49 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   SizedBox(
                     height: 87.0,
                   ),
-                  Container(
-                    color: Colors.black,
+                  Container(//レイアウトボックス
+                    // color: Colors.black,
+
+                    
+                   
                     child: Padding(
+                      
                       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                      child: FlatButton(
-                        textColor: Colors.white,
+                     
+                                          
+                        child:ElevatedButton(
+                        child: const Text('SKIP'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black,
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
                         onPressed: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context1) => Uploader())),
                         },
-                        child: Text('Skip'),
-                      ),
+                            
+                        // child: Text('Skip'), 
+),
+                      //  FlatButton(
+                           
+                      //   textColor: Colors.white,
+                          
+                          
+
+                    
+                      //   onPressed: () => {
+                      //     Navigator.of(context).push(MaterialPageRoute(
+                      //         builder: (context1) => Uploader())),
+                      //   },
+                            
+                      //   child: Text('Skip'), 
+                        
+
+                        
+                      // ),
                     ),
                   )
                 ],
@@ -87,6 +123,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   Container(
                     height: MediaQuery.of(context).size.height * 0.5,
                     width: MediaQuery.of(context).size.width * 0.8,
+                    //child: Image.asset('assets/card.png'),
                     child: Image.asset('assets/selection.png'),
                   ),
                   SizedBox(
@@ -119,11 +156,14 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   ),
                   Container(
                     color: Colors.black,
+                    
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                       child: FlatButton(
                         // color: Colors.teal,
                         textColor: Colors.white,
+                       
+                            
                         onPressed: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context1) => Uploader())),
@@ -209,8 +249,8 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   ),
                   WidgetSpan(
                     child: Icon(
-                      Icons.arrow_left,
-                      size: 45,
+                      Icons.arrow_back_ios_new,
+                      size: 35,
                       color: Colors.green[900],
                     ),
                   ),
