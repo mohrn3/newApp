@@ -51,7 +51,7 @@ class _CardDesignState extends State<CardDesign> {
     return Scaffold(
         appBar: AppBar(
           flexibleSpace: Container(
-            color: Colors.grey.shade900,
+            color:Colors.deepOrange//"download"の色
           ),
           actions: [
             FlatButton(
@@ -99,7 +99,10 @@ class _CardDesignState extends State<CardDesign> {
       child: RepaintBoundary(
         key: previewContainer,
         child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+                     borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),//ポストの丸み
+                      topRight: Radius.circular(30)),
+          //borderRadius: BorderRadius.only(topLeft: )(Radius.circular(30)),
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -114,9 +117,13 @@ class _CardDesignState extends State<CardDesign> {
                   height: 10,
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(5),
-                      topRight: Radius.circular(5)),
+                  borderRadius: BorderRadius.only(//
+                    topLeft:Radius.circular(5),
+                    topRight:Radius.circular(5),
+                    bottomLeft:Radius.circular(5),
+                    bottomRight:Radius.circular(5),
+                  ),
+                      
                   child: Container(
                     padding: EdgeInsets.fromLTRB(5, 1, 0, 0),
                     height: 32.0,

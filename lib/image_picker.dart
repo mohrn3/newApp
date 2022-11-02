@@ -127,9 +127,18 @@ class _Uploader extends State<Uploader> {
                               children: <Widget>[
                                 Expanded(
 
-                      child: ElevatedButton.icon(
+
+
+                        child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.center,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                      ElevatedButton.icon(
                       icon: Icon(Icons.camera_alt),  //icon data for elevated button
                       label: Text("Take a Photo"), //label text 
+                      
+                        
+              
                       style: ElevatedButton.styleFrom(
                           primary: Colors.black,
                           onPrimary: Colors.white,
@@ -139,8 +148,12 @@ class _Uploader extends State<Uploader> {
                         ),
                       onPressed: () => getImage(source: ImageSource.camera),
                       ),
-                  ),
 
+                          ],
+                        ),
+
+                  ),
+                  SizedBox(width:50),//ボックスの間隔
                       Expanded(
 
                       child: ElevatedButton.icon(
@@ -551,7 +564,12 @@ class PostForm extends StatelessWidget {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.person),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 5,color: Color(0xffffcabf)),//ピンク色の枠
+            borderRadius: BorderRadius.circular(10),
+          ),
+         leading: const Icon(Icons.person),//人のアイコン
+         iconColor:Colors.white70,
           title: SizedBox(
             width: 250.0,
             child: TextField(
@@ -562,7 +580,22 @@ class PostForm extends StatelessWidget {
           ),
         ),
         const Divider(),
-        Row(
+        ListTile(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 5,color: Color(0xffffcabf)),//ピンク色の枠
+            borderRadius: BorderRadius.circular(10),
+          ),
+          leading: const Icon(Icons.comment_bank),//コメントのアイコン
+          title: SizedBox(
+            width: 250.0,
+            child: TextField(
+              controller: personController,
+              decoration: const InputDecoration(
+                  hintText: "Write a comment", border: InputBorder.none),
+            ),
+          ),
+        ),
+        /*Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             // CircleAvatar(
@@ -588,9 +621,24 @@ class PostForm extends StatelessWidget {
             
             ,
           ],
-        ),
+        ),*/
         const Divider(),
         ListTile(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 5,color: Color(0xffffcabf)),//ピンク色の枠
+            borderRadius: BorderRadius.circular(10),
+          ),
+          leading: const Icon(Icons.map),//マップのアイコン
+          title: SizedBox(
+            width: 250.0,
+            child: TextField(
+              controller: personController,
+              decoration: const InputDecoration(
+                  hintText: "Where was this photo taken?", border: InputBorder.none),
+            ),
+          ),
+        ),
+        /*ListTile(
           leading: const Icon(Icons.pin_drop),
           title: SizedBox(
             width: 250.0,
@@ -602,6 +650,7 @@ class PostForm extends StatelessWidget {
             ),
           ),
         )
+        */
       ],
     );
   }

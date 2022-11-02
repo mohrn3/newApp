@@ -66,12 +66,8 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                     height: 87.0,
                   ),
                   Container(//レイアウトボックス
-                    // color: Colors.black,
-
-                    
-                   
                     child: Padding(
-                      
+                   
                       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
                      
                                           
@@ -80,7 +76,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                         style: ElevatedButton.styleFrom(
                           primary: Colors.black,
                           onPrimary: Colors.white,
-                          shape: RoundedRectangleBorder(
+                          shape: RoundedRectangleBorder(//ボックスの形
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
@@ -88,26 +84,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context1) => Uploader())),
                         },
-                            
-                        // child: Text('Skip'), 
-),
-                      //  FlatButton(
-                           
-                      //   textColor: Colors.white,
-                          
-                          
-
-                    
-                      //   onPressed: () => {
-                      //     Navigator.of(context).push(MaterialPageRoute(
-                      //         builder: (context1) => Uploader())),
-                      //   },
-                            
-                      //   child: Text('Skip'), 
-                        
-
-                        
-                      // ),
+                        ),
                     ),
                   )
                 ],
@@ -154,22 +131,26 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   SizedBox(
                     height: 108.0,
                   ),
-                  Container(
-                    color: Colors.black,
-                    
+                  Container(//レイアウトボックス
                     child: Padding(
+                   
                       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                      child: FlatButton(
-                        // color: Colors.teal,
-                        textColor: Colors.white,
-                       
-                            
+                     
+                                          
+                        child:ElevatedButton(
+                        child: const Text('SKIP'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black,
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(//ボックスの形
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
                         onPressed: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context1) => Uploader())),
                         },
-                        child: Text('Skip'),
-                      ),
+                        ),
                     ),
                   )
                 ],
@@ -214,18 +195,26 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   SizedBox(
                     height: 108.0,
                   ),
-                  Container(
-                    color: Colors.black,
+                  Container(//レイアウトボックス
                     child: Padding(
+                   
                       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-                      child: FlatButton(
-                        textColor: Colors.white,
+                     
+                                          
+                        child:ElevatedButton(
+                        child: const Text('SKIP'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black,
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(//ボックスの形
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
                         onPressed: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context1) => Uploader())),
                         },
-                        child: Text('Skip'),
-                      ),
+                        ),
                     ),
                   )
                 ],
@@ -249,9 +238,10 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   ),
                   WidgetSpan(
                     child: Icon(
-                      Icons.arrow_back_ios_new,
+                      
+                      Icons.arrow_back,//"Drag Left"のアイコン 
                       size: 35,
-                      color: Colors.green[900],
+                      color: Colors.green.shade600,
                     ),
                   ),
                 ],
