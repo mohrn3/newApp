@@ -99,9 +99,9 @@ class _CardDesignState extends State<CardDesign> {
       child: RepaintBoundary(
         key: previewContainer,
         child: ClipRRect(
-                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(30),//ポストの丸み
-                      topRight: Radius.circular(30)),
+                     borderRadius: BorderRadius.all(//ポストの丸み
+                    Radius.circular(30),//ポストの丸み
+                     ), 
           //borderRadius: BorderRadius.only(topLeft: )(Radius.circular(30)),
           child: Container(
             decoration: BoxDecoration(
@@ -117,11 +117,9 @@ class _CardDesignState extends State<CardDesign> {
                   height: 10,
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadius.only(//
-                    topLeft:Radius.circular(5),
-                    topRight:Radius.circular(5),
-                    bottomLeft:Radius.circular(5),
-                    bottomRight:Radius.circular(5),
+                  borderRadius: BorderRadius.all(//
+                    Radius.circular(5),
+                   
                   ),
                       
                   child: Container(

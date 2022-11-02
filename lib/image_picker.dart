@@ -573,7 +573,7 @@ class PostForm extends StatelessWidget {
           title: SizedBox(
             width: 250.0,
             child: TextField(
-              controller: personController,
+              controller: personController,//"人"のコメント入力
               decoration: const InputDecoration(
                   hintText: "Display name", border: InputBorder.none),
             ),
@@ -589,7 +589,7 @@ class PostForm extends StatelessWidget {
           title: SizedBox(
             width: 250.0,
             child: TextField(
-              controller: personController,
+              controller: descriptionController,//"コメント"の入力
               decoration: const InputDecoration(
                   hintText: "Write a comment", border: InputBorder.none),
             ),
@@ -632,7 +632,8 @@ class PostForm extends StatelessWidget {
           title: SizedBox(
             width: 250.0,
             child: TextField(
-              controller: personController,
+              controller: locationController,//マップのコメント入力
+
               decoration: const InputDecoration(
                   hintText: "Where was this photo taken?", border: InputBorder.none),
             ),
