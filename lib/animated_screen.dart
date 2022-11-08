@@ -210,8 +210,8 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   WidgetSpan(
                     child: Icon(
                       Icons.arrow_left,
-                      size: 45,
-                      color: Colors.green[900],
+                      size: 35,
+                      color: Color(0xFFff8082),
                     ),
                   ),
                 ],

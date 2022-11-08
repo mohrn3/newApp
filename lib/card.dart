@@ -16,6 +16,7 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:ui' as ui;
 import 'package:intl/intl.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:http/http.dart' as http;
 
 class CardDesign extends StatefulWidget {
   // final File ;
@@ -329,7 +330,8 @@ class _CardDesignState extends State<CardDesign> {
           await image.toByteData(format: ui.ImageByteFormat.png);
       Uint8List pngBytes = byteData!.buffer.asUint8List();
 
-      File imgFile = new File('$directory/nokosu_${DateTime.now()}.png');
+      final imgPath = '$directory/nokosu_${DateTime.now()}.png';
+      File imgFile = new File(imgPath);
 
       imagePaths.add(imgFile.path);
       imgFile.writeAsBytes(pngBytes).then((value) async {

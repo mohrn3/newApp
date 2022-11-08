@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "385552213344",
+    "project_id": "nokosu-39ba4",
+    "storage_bucket": "nokosu-39ba4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385552213344:android:4a00c774866a54c93e2a05",
+        "android_client_info": {
+          "package_name": "com.example.newnokosuios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "385552213344-clsd0lr79hhn557tjs23bl9ci542g100.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.newnokosuios",
+            "certificate_hash": "6295b949b21b71814bb6ebe5e66bda42f631c4d3"
+          }
+        },
+        {
+          "client_id": "385552213344-5ej44qfhpemdrirmjio6kqv7kbu1jket.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7F9e5r6jV-5_es9T_4IKY9JiMVoHxwfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "385552213344-5ej44qfhpemdrirmjio6kqv7kbu1jket.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "385552213344-87n3j3gnm7di1m6mg1663hmto7gatd06.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.newnokosuios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

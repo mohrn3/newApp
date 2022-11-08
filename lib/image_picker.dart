@@ -115,7 +115,7 @@ class _Uploader extends State<Uploader> {
 
                       child: Container(
                         padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                        color: Colors.black,
+                        color: Color(0xFFff8082),
                         height: 100,
                         // decoration: BoxDecoration(
                         //     gradient: LinearGradient(
@@ -371,8 +371,8 @@ class _Uploader extends State<Uploader> {
                         value: true,
                         textOn: 'Positive',
                         textOff: 'Negative',
-                        colorOn: Colors.red[300],
-                        colorOff: Colors.blue.shade400,
+                        colorOn: Color(0xFFff8082),
+                        colorOff: Color(0xFF4dc4ff),
                         iconOn: Icons.thumb_up_sharp,
                         iconOff: Icons.thumb_down,
                         textSize: 8,
@@ -403,7 +403,7 @@ class _Uploader extends State<Uploader> {
                             value: true,
                             textOn: 'Emotional',
                             textOff: 'Not-Selected',
-                            colorOn: Colors.red.shade300,
+                            colorOn: Color(0xFFff8082),
                             colorOff: Colors.grey,
                             iconOn: Icons.favorite_border_rounded,
                             iconOff: Icons.favorite_border_rounded,
