@@ -4,6 +4,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,6 +17,7 @@ import 'package:path_provider/path_provider.dart';
 import 'dart:ui' as ui;
 import 'package:intl/intl.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'random.dart';
 
 class CardDesign extends StatefulWidget {
   // final File ;
@@ -23,7 +25,7 @@ class CardDesign extends StatefulWidget {
   final img_string;
   final person;
   final description;
-  final location;
+  // final location;
   final Phy;
   final Emo;
   final Cul;
@@ -33,7 +35,7 @@ class CardDesign extends StatefulWidget {
       {this.img_string,
       this.person,
       this.description,
-      this.location,
+      // this.location,
       this.Phy,
       this.Emo,
       this.Cul,
@@ -46,36 +48,55 @@ class CardDesign extends StatefulWidget {
 class _CardDesignState extends State<CardDesign> {
   GlobalKey previewContainer = new GlobalKey();
   bool click = true;
+  MaterialColor turn = randomColor();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          flexibleSpace: Container(
-            color: Colors.grey.shade900,
+      body: Center(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              for (var i = 0; i < 2; i++)
+                Container(
+                  // color: i.isEven ? Colors.blue : Colors.pink,
+                  color: turn,
+                  width: MediaQuery.of(context).size.width * 1.0,
+                  height: MediaQuery.of(context).size.height * 0.8,
+                ),
+            ],
           ),
-          actions: [
-            FlatButton(
-                onPressed: _captureSocialPng1,
-                child: Text(
-                  "Download",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12.0),
-                )),
-          ],
         ),
-        body: Container(
-          padding: EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                children: [
-                  buildCard(context),
-                ],
-              )),
-        ));
+      ),
+    );
+    // return Scaffold(
+    //     appBar: AppBar(
+    //       flexibleSpace: Container(
+    //         color: Colors.grey.shade900,
+    //       ),
+    //       actions: [
+    //         FlatButton(
+    //             onPressed: _captureSocialPng1,
+    //             child: Text(
+    //               "Download",
+    //               style: TextStyle(
+    //                   color: Colors.white,
+    //                   fontWeight: FontWeight.bold,
+    //                   fontSize: 12.0),
+    //             )),
+    //       ],
+    //     ),
+    //     body: Container(
+    //       padding: EdgeInsets.all(16.0),
+    //       child: SingleChildScrollView(
+    //           scrollDirection: Axis.vertical,
+    //           child: Column(
+    //             children: [
+    //               buildCard(context),
+    //             ],
+    //           )),
+    //     ));
   }
 
   Card buildCard(context) {
@@ -90,10 +111,10 @@ class _CardDesignState extends State<CardDesign> {
     var cardImage =
         NetworkImage('https://source.unsplash.com/random/800x600?house');
     var supportingText = widget.description;
-    var username = widget.person;
+    var title = widget.person;
 
     return Card(
-      color: Colors.white,
+      color: Colors.white, //カードの四角
       elevation: 4.0,
 
       // elevation: 4.0,
@@ -125,7 +146,7 @@ class _CardDesignState extends State<CardDesign> {
                       children: [
                         Align(
                           alignment: Alignment.center,
-                          child: Text(username,
+                          child: Text(title,
                               style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 15,
@@ -141,13 +162,13 @@ class _CardDesignState extends State<CardDesign> {
                 ),
                 ClipRRect(
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.4,
                     decoration: BoxDecoration(
                         color: Colors.grey.shade100,
                         image: DecorationImage(
                           image: Image.memory(base64Decode(widget.img_string))
                               .image,
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.contain,
                         )),
                   ),
                 ),
@@ -171,21 +192,22 @@ class _CardDesignState extends State<CardDesign> {
                     child: Stack(
                       children: <Widget>[
                         Positioned(
-                            left: 5,
+                            // left → right
+                            right: 95,
                             child: Container(
                               child: showConditionPhysical(),
                             )),
                         Positioned(
-                            left: 45,
+                            right: 55,
                             child: Container(
                               child: showConditionCultural(),
                             )),
                         Positioned(
-                            left: 85,
+                            right: 15,
                             child: Container(
                               child: showConditionEmotional(),
                             )),
-                        Positioned(
+                        /*Positioned(
                           top: 7,
                           right: 15,
                           child: Container(
@@ -207,7 +229,7 @@ class _CardDesignState extends State<CardDesign> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 13),
                               )),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
