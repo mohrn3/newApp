@@ -516,7 +516,7 @@ class _Uploader extends State<Uploader> {
                 img_string: imgString,
                 person: person,
                 description: description,
-                location: location,
+                // location: location,
                 Phy: boolPhy,
                 Emo: boolEmo,
                 Cul: boolCul,

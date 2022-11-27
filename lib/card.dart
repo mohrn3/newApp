@@ -58,13 +58,28 @@ class _CardDesignState extends State<CardDesign> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              for (var i = 0; i < 2; i++)
-                Container(
-                  // color: i.isEven ? Colors.blue : Colors.pink,
-                  color: turn,
-                  width: MediaQuery.of(context).size.width * 1.0,
-                  height: MediaQuery.of(context).size.height * 0.8,
+              Container(
+                // color: i.isEven ? Colors.blue : Colors.pink,
+                color: turn,
+                width: MediaQuery.of(context).size.width * 1.0,
+                height: MediaQuery.of(context).size.height * 0.8,
+                padding: const EdgeInsets.only(
+                    bottom: 260, top: 40, right: 50, left: 50),
+                alignment: Alignment.center,
+                child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: Image.memory(base64Decode(widget.img_string))
+                              .image,
+                          fit: BoxFit.cover)),
                 ),
+              ),
+              Container(
+                // color: i.isEven ? Colors.blue : Colors.pink,
+                color: turn,
+                width: MediaQuery.of(context).size.width * 1.0,
+                height: MediaQuery.of(context).size.height * 0.8,
+              ),
             ],
           ),
         ),
