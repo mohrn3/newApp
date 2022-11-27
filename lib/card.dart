@@ -55,11 +55,10 @@ class _CardDesignState extends State<CardDesign> {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
+            scrollDirection: Axis.horizontal,
+            child: Row(children: [
+              //1枚目の処理 ------------------------
               Container(
-                // color: i.isEven ? Colors.blue : Colors.pink,
                 color: turn,
                 width: MediaQuery.of(context).size.width * 1.0,
                 height: MediaQuery.of(context).size.height * 0.8,
@@ -67,22 +66,33 @@ class _CardDesignState extends State<CardDesign> {
                     bottom: 260, top: 40, right: 50, left: 50),
                 alignment: Alignment.center,
                 child: Container(
+                  //imgaeの処理
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: Image.memory(base64Decode(widget.img_string))
                               .image,
                           fit: BoxFit.cover)),
+
+                  //iconの処理
+
+                  //textの処理
                 ),
               ),
+
+              //2枚目の処理 ------------------------
               Container(
-                // color: i.isEven ? Colors.blue : Colors.pink,
-                color: turn,
-                width: MediaQuery.of(context).size.width * 1.0,
-                height: MediaQuery.of(context).size.height * 0.8,
-              ),
-            ],
-          ),
-        ),
+                  color: turn,
+                  width: MediaQuery.of(context).size.width * 1.0,
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  alignment: Alignment.center,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/line.png"),
+                          fit: BoxFit.fitWidth),
+                    ),
+                  )),
+            ])),
       ),
     );
     // return Scaffold(
