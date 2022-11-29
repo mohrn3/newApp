@@ -8,6 +8,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:newnokosuios/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,7 @@ import 'dart:ui' as ui;
 import 'package:intl/intl.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'random.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class CardDesign extends StatefulWidget {
   // final File ;
@@ -49,72 +51,167 @@ class _CardDesignState extends State<CardDesign> {
   GlobalKey previewContainer = new GlobalKey();
   bool click = true;
   MaterialColor turn = randomColor();
+  var _selectedValue = 'Download';
+  var _usStates = ["Download", "Home"];
 
   @override
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String formattedDate1 = DateFormat.yMMMMEEEEd().add_jms().format(now);
+    var title = widget.person;
+    var supportingText = widget.description;
+
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        flexibleSpace: Container(color: Colors.grey.shade900),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+
+        // タイトルテキスト
+        title: const Text(
+          'Card',
+          style: const TextStyle(color: Colors.white),
+        ),
+        // 右側のアイコン一覧
+        actions: <Widget>[
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: Icon(Icons.arrow_back),
+          //   padding: const EdgeInsets.only(left: 70),
+          // ),
+          PopupMenuButton<String>(
+            initialValue: _selectedValue,
+            onSelected: (String s) {
+              setState(() {
+                _selectedValue = s;
+              });
+            },
+            itemBuilder: (BuildContext context) {
+              return _usStates.map((String s) {
+                return PopupMenuItem(
+                  child: Text(s),
+                  value: s,
+                );
+              }).toList();
+            },
+          ),
+        ],
+      ),
       body: Center(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.only(bottom: 70),
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              //1枚目の処理 ------------------------
+              //page 1 ------------------------
               Container(
                 color: turn,
                 width: MediaQuery.of(context).size.width * 1.0,
                 height: MediaQuery.of(context).size.height * 0.8,
-                // padding: const EdgeInsets.only(top: 20, right: 50, left: 50),
                 alignment: Alignment.center,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      height: MediaQuery.of(context).size.height * 0.5,
-                      //imgaeの処理
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image:
-                                  Image.memory(base64Decode(widget.img_string))
-                                      .image,
-                              fit: BoxFit.fitWidth)),
+                    //image
+                    Neumorphic(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: MediaQuery.of(context).size.height * 0.45,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: Image.memory(
+                                        base64Decode(widget.img_string))
+                                    .image,
+                                fit: BoxFit.cover)),
+                      ),
                     ),
 
-                    //iconの処理
+                    //icon
                     Container(
-                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                      height: 30.0,
+                      padding: EdgeInsets.fromLTRB(0, 30, 0, 5),
+                      height: 65.0,
                       child: Stack(
                         children: <Widget>[
                           Positioned(
                               // left → right
-                              right: 95,
-                              bottom: 10,
+                              right: 120,
                               child: Container(
                                 child: showConditionPhysical(),
                               )),
                           Positioned(
-                              right: 55,
-                              bottom: 10,
+                              right: 80,
                               child: Container(
                                 child: showConditionCultural(),
                               )),
                           Positioned(
-                              right: 15,
-                              bottom: 10,
+                              right: 40,
                               child: Container(
                                 child: showConditionEmotional(),
                               )),
                         ],
                       ),
                     ),
-                    //textの処理
+
+                    //text
+                    Neumorphic(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: MediaQuery.of(context).size.height * 0.15,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Text(title,
+                                style: const TextStyle(
+                                  fontFamily: 'Noto_Sans_JP',
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w800,
+                                )),
+                            Divider(
+                              thickness: 1,
+                              color: turn,
+                            ),
+                            Text(supportingText,
+                                style: const TextStyle(
+                                  fontFamily: 'Noto_Sans_JP',
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                )),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    // //date
+                    // Container(
+                    //   padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    //   width: MediaQuery.of(context).size.width * 0.8,
+                    //   alignment: Alignment.centerLeft,
+                    //   child: Text(formattedDate1,
+                    //       style: const TextStyle(
+                    //         fontFamily: '',
+                    //         color: Colors.black,
+                    //         fontSize: 13,
+                    //       )),
+                    // )
                   ],
                 ),
               ),
 
-              //2枚目の処理 ------------------------
+              //page 2 ------------------------
               Container(
                 color: turn,
                 width: MediaQuery.of(context).size.width * 1.0,
