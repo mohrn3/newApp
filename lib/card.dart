@@ -20,6 +20,7 @@ import 'package:intl/intl.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'random.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class CardDesign extends StatefulWidget {
   // final File ;
@@ -47,12 +48,31 @@ class CardDesign extends StatefulWidget {
   _CardDesignState createState() => _CardDesignState();
 }
 
+enum Menu { download, home }
+
 class _CardDesignState extends State<CardDesign> {
   GlobalKey previewContainer = new GlobalKey();
   bool click = true;
   MaterialColor turn = randomColor();
   var _selectedValue = 'Download';
   var _usStates = ["Download", "Home"];
+
+  Uint8List bytes = Uint8List.fromList([0, 2, 5, 7, 42, 255]);
+  final globalKey = GlobalKey();
+
+  Future<void> widgetToImage() async {
+    final boundary =
+        globalKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;
+    if (boundary == null) {
+      return;
+    }
+    final image = await boundary.toImage();
+    final byteData = await image.toByteData(format: ImageByteFormat.png);
+    bytes = byteData!.buffer.asUint8List();
+
+    final result = await ImageGallerySaver.saveImage(bytes);
+    print(result);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,26 +103,26 @@ class _CardDesignState extends State<CardDesign> {
           //   icon: Icon(Icons.arrow_back),
           //   padding: const EdgeInsets.only(left: 70),
           // ),
-          PopupMenuButton<String>(
-            initialValue: _selectedValue,
-            onSelected: (String s) {
-              setState(() {
-                _selectedValue = s;
-              });
-            },
-            itemBuilder: (BuildContext context) {
-              return _usStates.map((String s) {
-                return PopupMenuItem(
-                  child: Text(s),
-                  value: s,
-                );
-              }).toList();
-            },
+          PopupMenuButton<Menu>(
+            onSelected: popupMenuSelected,
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<Menu>>[
+              const PopupMenuItem<Menu>(
+                value: Menu.download,
+                child: Text('Download'),
+              ),
+              const PopupMenuItem<Menu>(
+                value: Menu.home,
+                child: Text('Home'),
+              ),
+            ],
           ),
         ],
       ),
       body: Center(
+          child: RepaintBoundary(
+        key: globalKey,
         child: SingleChildScrollView(
+          // physics: NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.only(bottom: 70),
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -228,7 +248,7 @@ class _CardDesignState extends State<CardDesign> {
             ],
           ),
         ),
-      ),
+      )),
     );
     // return Scaffold(
     //     appBar: AppBar(
@@ -563,5 +583,29 @@ class _CardDesignState extends State<CardDesign> {
         return alert;
       },
     );
+  }
+
+  void popupMenuSelected(Menu selectedMenu) {
+    //引数selectedMenuをもつ
+    switch (selectedMenu) {
+      //条件分岐
+      case Menu.download:
+        //SecondPageに画面遷移
+        // MaterialPageRoute(builder: (context) {
+        //   return _captureSocialPng1;
+        // }),
+        widgetToImage();
+        break;
+      case Menu.home:
+        Navigator.of(context).push(
+          //ThirdPageに画面遷移
+          MaterialPageRoute(builder: (context) {
+            return const Uploader();
+          }),
+        );
+        break;
+      default: //それ以外のとき
+        break;
+    }
   }
 }
