@@ -55,44 +55,82 @@ class _CardDesignState extends State<CardDesign> {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(children: [
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
               //1枚目の処理 ------------------------
               Container(
                 color: turn,
                 width: MediaQuery.of(context).size.width * 1.0,
                 height: MediaQuery.of(context).size.height * 0.8,
-                padding: const EdgeInsets.only(
-                    bottom: 260, top: 40, right: 50, left: 50),
+                // padding: const EdgeInsets.only(top: 20, right: 50, left: 50),
                 alignment: Alignment.center,
-                child: Container(
-                  //imgaeの処理
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: Image.memory(base64Decode(widget.img_string))
-                              .image,
-                          fit: BoxFit.cover)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      //imgaeの処理
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  Image.memory(base64Decode(widget.img_string))
+                                      .image,
+                              fit: BoxFit.fitWidth)),
+                    ),
 
-                  //iconの処理
-
-                  //textの処理
+                    //iconの処理
+                    Container(
+                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                      height: 30.0,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned(
+                              // left → right
+                              right: 95,
+                              bottom: 10,
+                              child: Container(
+                                child: showConditionPhysical(),
+                              )),
+                          Positioned(
+                              right: 55,
+                              bottom: 10,
+                              child: Container(
+                                child: showConditionCultural(),
+                              )),
+                          Positioned(
+                              right: 15,
+                              bottom: 10,
+                              child: Container(
+                                child: showConditionEmotional(),
+                              )),
+                        ],
+                      ),
+                    ),
+                    //textの処理
+                  ],
                 ),
               ),
 
               //2枚目の処理 ------------------------
               Container(
-                  color: turn,
-                  width: MediaQuery.of(context).size.width * 1.0,
-                  height: MediaQuery.of(context).size.height * 0.8,
-                  alignment: Alignment.center,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/line.png"),
-                          fit: BoxFit.fitWidth),
-                    ),
-                  )),
-            ])),
+                color: turn,
+                width: MediaQuery.of(context).size.width * 1.0,
+                height: MediaQuery.of(context).size.height * 0.8,
+                alignment: Alignment.center,
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/line.png"),
+                        fit: BoxFit.fitWidth),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
     // return Scaffold(
