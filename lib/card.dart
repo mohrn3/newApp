@@ -334,7 +334,7 @@ class _CardDesignState extends State<CardDesign> {
       imagePaths.add(imgFile.path);
       imgFile.writeAsBytes(pngBytes).then((value) async {
         await ImageGallerySaver.saveImage(Uint8List.fromList(pngBytes),
-            quality: 1000, name: 'nokosu-${DateTime.now()}.png');
+            quality: 100, name: 'nokosu-${DateTime.now()}.png');
       }).catchError((onError) {
         print(onError);
       }).whenComplete(() => showAlertDialog(context));
