@@ -72,7 +72,7 @@ class _CardDesignState extends State<CardDesign> {
     // bytes = byteData!.buffer.asUint8List();
     Uint8List pngBytes = byteData!.buffer.asUint8List();
 
-    File imgFile = new File('$directory/nokosu_${DateTime.now()}.png');
+    File imgFile = new File('$directory/cuttie_${DateTime.now()}.png');
 
     imgFile.writeAsBytes(pngBytes).then((value) async {
       await ImageGallerySaver.saveImage(Uint8List.fromList(pngBytes),
@@ -254,7 +254,7 @@ class _CardDesignState extends State<CardDesign> {
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage("assets/line.png"),
+                        image: AssetImage("assets/line3.png"),
                         fit: BoxFit.fitWidth),
                   ),
                 ),

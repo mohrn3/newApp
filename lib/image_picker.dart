@@ -102,10 +102,10 @@ class _Uploader extends State<Uploader> {
                                 // FadeAnimatedText('do it RIGHT NOW!!!'),
                                 // RotateAnimatedText('Hello!'),
                                 RotateAnimatedText(
-                                    'Welcome to NOKOSU Application.'),
-                                RotateAnimatedText('NOKOSUアプリケーションへようこそ。'),
-                                RotateAnimatedText('NOKOSU 앱에 오신 것을 환영합니다. '),
-                                RotateAnimatedText('欢迎使用 NOKOSU 应用程序。'),
+                                    'Welcome to CUTTIE Application.'),
+                                RotateAnimatedText('CUTTIEアプリケーションへようこそ。'),
+                                RotateAnimatedText('CUTTIE 앱에 오신 것을 환영합니다. '),
+                                RotateAnimatedText('欢迎使用 CUTTIE 应用程序。'),
                               ],
                             ),
                           ),
@@ -115,7 +115,7 @@ class _Uploader extends State<Uploader> {
 
                       child: Container(
                         padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                        color: Colors.black,
+                        color: Color(0xffffcabf),
                         height: 100,
                         // decoration: BoxDecoration(
                         //     gradient: LinearGradient(
@@ -207,7 +207,7 @@ class _Uploader extends State<Uploader> {
                               height: 10,
                             ),
                             const Text(
-                              "Powered by GlobalDesign@2021 Future University Hakodate, Japan",
+                              "Powered by GlobalDesign@2022 Future University Hakodate, Japan",
                               style: TextStyle(fontSize: 8),
                             ),
                           ],
@@ -571,49 +571,73 @@ class PostForm extends StatelessWidget {
           ),
         ),
         const Divider(),
-        ListTile(
-          leading: const Icon(Icons.person),
-          title: SizedBox(
-            width: 250.0,
-            child: TextField(
-              controller: personController,
-              decoration: const InputDecoration(
-                  hintText: "Display name", border: InputBorder.none),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              borderRadius: BorderRadius.circular(10),
             ),
-          ),
-        ),
-        const Divider(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            // CircleAvatar(
-            //   backgroundImage:
-            //       Image.network(model.userDetails!.photoURL ?? "").image,
-            //   radius: 20,
-            // ),
-            SizedBox(
+            leading: const Icon(Icons.title_rounded),
+            title: SizedBox(
               width: 250.0,
               child: TextField(
-                controller: descriptionController,
+                controller: personController,
                 decoration: const InputDecoration(
-                    hintText: "Write a comment...", border: InputBorder.none),
+                    hintText: "Title", border: InputBorder.none),
               ),
             ),
-          ],
+          ),
         ),
         const Divider(),
-        ListTile(
-          leading: const Icon(Icons.pin_drop),
-          title: SizedBox(
-            width: 250.0,
-            child: TextField(
-              controller: locationController,
-              decoration: const InputDecoration(
-                  hintText: "Where was this photo taken?",
-                  border: InputBorder.none),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              borderRadius: BorderRadius.circular(10),
+            ),
+            leading: const Icon(Icons.comment_bank), //コメントのアイコン
+            title: SizedBox(
+              width: 250.0,
+              child: TextField(
+                controller: descriptionController, //"コメント"の入力
+                decoration: const InputDecoration(
+                    hintText: "Write a comment", border: InputBorder.none),
+              ),
             ),
           ),
-        )
+        ),
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+        // children: <Widget>[
+        //   // CircleAvatar(
+        //   //   backgroundImage:
+        //   //       Image.network(model.userDetails!.photoURL ?? "").image,
+        //   //   radius: 20,
+        //   // ),
+        //   SizedBox(
+        //     width: 250.0,
+        //     child: TextField(
+        //       controller: descriptionController,
+        //       decoration: const InputDecoration(
+        //           hintText: "Write a comment...", border: InputBorder.none),
+        //       ),
+        //     ),
+        //   ],
+        // ),
+        //const Divider(),
+        // ListTile(
+        //   leading: const Icon(Icons.pin_drop),
+        //   title: SizedBox(
+        //     width: 250.0,
+        //     child: TextField(
+        //       controller: locationController,
+        //       decoration: const InputDecoration(
+        //           hintText: "Where was this photo taken?",
+        //           border: InputBorder.none),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

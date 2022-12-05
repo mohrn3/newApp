@@ -111,6 +111,7 @@ flutter:
     - assets/gal.png
     - assets/cam.png
     - assets/line.png
+    - assets/line3.png
 
   fonts:
     - family: Noto_Sans_JP
