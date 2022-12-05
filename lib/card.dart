@@ -66,12 +66,21 @@ class _CardDesignState extends State<CardDesign> {
     if (boundary == null) {
       return;
     }
-    final image = await boundary.toImage();
+    final image = await boundary.toImage(pixelRatio: 3.0);
+    final directory = (await getApplicationDocumentsDirectory()).path;
     final byteData = await image.toByteData(format: ImageByteFormat.png);
-    bytes = byteData!.buffer.asUint8List();
+    // bytes = byteData!.buffer.asUint8List();
+    Uint8List pngBytes = byteData!.buffer.asUint8List();
 
-    final result = await ImageGallerySaver.saveImage(bytes);
-    print(result);
+    File imgFile = new File('$directory/nokosu_${DateTime.now()}.png');
+
+    imgFile.writeAsBytes(pngBytes).then((value) async {
+      await ImageGallerySaver.saveImage(Uint8List.fromList(pngBytes),
+          quality: 1000, name: 'cuttie-${DateTime.now()}.png');
+    }).catchError((onError) {
+      print(onError);
+    }).whenComplete(() => showAlertDialog(context));
+    // print(result);
   }
 
   @override
@@ -90,13 +99,10 @@ class _CardDesignState extends State<CardDesign> {
             onPressed: () {
               Navigator.pop(context);
             }),
-
-        // タイトルテキスト
         title: const Text(
           'Card',
           style: const TextStyle(color: Colors.white),
         ),
-        // 右側のアイコン一覧
         actions: <Widget>[
           // IconButton(
           //   onPressed: () {},
@@ -119,12 +125,14 @@ class _CardDesignState extends State<CardDesign> {
         ],
       ),
       body: Center(
-          child: RepaintBoundary(
-        key: globalKey,
-        child: SingleChildScrollView(
-          // physics: NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.only(bottom: 70),
-          scrollDirection: Axis.horizontal,
+          //   child: RepaintBoundary(
+          // key: globalKey,
+          child: SingleChildScrollView(
+        // physics: NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.only(bottom: 70),
+        scrollDirection: Axis.horizontal,
+        child: RepaintBoundary(
+          key: globalKey,
           child: Row(
             children: [
               //page 1 ------------------------
@@ -139,10 +147,15 @@ class _CardDesignState extends State<CardDesign> {
                   children: [
                     //image
                     Neumorphic(
+                      style: NeumorphicStyle(
+                        intensity: 0.6,
+                      ),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.8,
                         height: MediaQuery.of(context).size.height * 0.45,
                         decoration: BoxDecoration(
+                            border: Border.all(color: turn, width: 10),
+                            borderRadius: BorderRadius.circular(5),
                             image: DecorationImage(
                                 image: Image.memory(
                                         base64Decode(widget.img_string))
@@ -185,7 +198,8 @@ class _CardDesignState extends State<CardDesign> {
                         height: MediaQuery.of(context).size.height * 0.15,
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(5),
+                          // border: Border.all(color: turn, width: 10),
                         ),
                         alignment: Alignment.centerLeft,
                         child: Column(
@@ -470,48 +484,75 @@ class _CardDesignState extends State<CardDesign> {
 
   showConditionPhysical() {
     if (widget.Phy == "true") {
-      return ImageIcon(
-        AssetImage("assets/nokosubox.png"),
-        color: Colors.blue[700],
-        size: 24,
+      // return ImageIcon(
+      //   AssetImage("assets/nokosubox.png"),
+      //   color: Colors.blue[700],
+      //   size: 24,
+      // );
+      return NeumorphicIcon(
+        Icons.widgets,
+        size: 26,
       );
     } else {
-      return ImageIcon(
-        AssetImage("assets/nokosubox.png"),
-        color: Colors.grey.shade300,
-        size: 24,
+      // return ImageIcon(
+      //   AssetImage("assets/nokosubox.png"),
+      //   color: Colors.grey.shade300,
+      //   size: 24,
+      // );
+      return Icon(
+        Icons.widgets,
+        color: Colors.grey.shade800,
+        size: 26,
       );
     }
   }
 
   showConditionCultural() {
     if (widget.Cul == "true") {
-      return ImageIcon(
-        AssetImage("assets/nokosuearth.png"),
-        color: Colors.teal,
-        size: 24,
+      // return ImageIcon(
+      //   AssetImage("assets/nokosuearth.png"),
+      //   color: Colors.teal,
+      //   size: 24,
+      // );
+      return NeumorphicIcon(
+        Icons.public,
+        size: 26,
       );
     } else {
-      return ImageIcon(
-        AssetImage("assets/nokosuearth.png"),
-        color: Colors.grey.shade300,
-        size: 24,
+      // return ImageIcon(
+      //   AssetImage("assets/nokosuearth.png"),
+      //   color: Colors.grey.shade300,
+      //   size: 24,
+      // );
+      return Icon(
+        Icons.public,
+        color: Colors.grey.shade800,
+        size: 26,
       );
     }
   }
 
   showConditionEmotional() {
     if (widget.Emo == "true") {
-      return ImageIcon(
-        AssetImage("assets/nokosuheart.png"),
-        color: Colors.red.shade300,
-        size: 24,
+      // return ImageIcon(
+      //   AssetImage("assets/nokosuheart.png"),
+      //   color: Colors.red.shade300,
+      //   size: 24,
+      // );
+      return NeumorphicIcon(
+        Icons.favorite,
+        size: 26,
       );
     } else {
-      return ImageIcon(
-        AssetImage("assets/nokosuheart.png"),
-        color: Colors.grey.shade300,
-        size: 24,
+      // return ImageIcon(
+      //   AssetImage("assets/nokosuheart.png"),
+      //   color: Colors.grey.shade300,
+      //   size: 24,
+      // );
+      return Icon(
+        Icons.favorite,
+        color: Colors.grey.shade800,
+        size: 26,
       );
     }
   }
@@ -590,7 +631,6 @@ class _CardDesignState extends State<CardDesign> {
     switch (selectedMenu) {
       //条件分岐
       case Menu.download:
-        //SecondPageに画面遷移
         // MaterialPageRoute(builder: (context) {
         //   return _captureSocialPng1;
         // }),
@@ -598,13 +638,12 @@ class _CardDesignState extends State<CardDesign> {
         break;
       case Menu.home:
         Navigator.of(context).push(
-          //ThirdPageに画面遷移
           MaterialPageRoute(builder: (context) {
             return const Uploader();
           }),
         );
         break;
-      default: //それ以外のとき
+      default:
         break;
     }
   }
