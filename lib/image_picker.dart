@@ -32,7 +32,14 @@ class _Uploader extends State<Uploader> {
   Map<String, double> currentLocation = {};
   TextEditingController personController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  TextEditingController locationController = TextEditingController();
+  TextEditingController commentController1 = TextEditingController();
+  TextEditingController commentController2 = TextEditingController();
+  TextEditingController commentController3 = TextEditingController();
+  TextEditingController commentController4 = TextEditingController();
+  TextEditingController commentController5 = TextEditingController();
+  TextEditingController commentController6 = TextEditingController();
+  TextEditingController commentController7 = TextEditingController();
+  // TextEditingController locationController = TextEditingController();
   ImagePicker imagePicker = ImagePicker();
 
   bool uploading = false;
@@ -221,7 +228,7 @@ class _Uploader extends State<Uploader> {
           ),
         )
       : Scaffold(
-          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: true,
           appBar: AppBar(
             // backgroundColor: Colors.white70,
             flexibleSpace: Container(color: Colors.grey.shade900
@@ -249,7 +256,14 @@ class _Uploader extends State<Uploader> {
                 imageFile: file,
                 personController: personController,
                 descriptionController: descriptionController,
-                locationController: locationController,
+                commentController1: commentController1,
+                commentController2: commentController2,
+                commentController3: commentController3,
+                commentController4: commentController4,
+                commentController5: commentController5,
+                commentController6: commentController6,
+                commentController7: commentController7,
+                // locationController: locationController,
                 loading: uploading,
               ),
               // Divider(), //scroll view where we will show location to users
@@ -277,23 +291,36 @@ class _Uploader extends State<Uploader> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
+                    padding: EdgeInsets.only(bottom: 50),
+                    child: SizedBox(
+                      width: 150.0,
+                      height: 50.0,
                       child: ElevatedButton(
-                    child: Text("Next".toUpperCase(),
-                        style: TextStyle(fontSize: 12)),
-                    style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.black),
-                      // shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      //     RoundedRectangleBorder(
-                      //         borderRadius: BorderRadius.zero,
-                      //         side: BorderSide(color: Colors.green)))
-                    ),
-                    // onPressed: () => ShowDialog(context),
+                        child: Text('NEXT'.toUpperCase(),
+                            style: TextStyle(fontSize: 12)),
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xffff8082),
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        // style: ButtonStyle(
+                        //   foregroundColor:
+                        //       MaterialStateProperty.all<Color>(Colors.white),
+                        //   backgroundColor:
+                        //       MaterialStateProperty.all<Color>(Colors.black),
+                        //   // shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        //   //     RoundedRectangleBorder(
+                        //   //         borderRadius: BorderRadius.zero,
+                        //   //         side: BorderSide(color: Colors.green)))
+                        // ),
+                        // onPressed: () => ShowDialog(context),
 
-                    onPressed: () => ShowDialogKJ(context),
-                  )),
+                        onPressed: () => ShowDialogKJ(context),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     //Use of SizedBox
                     width: 15,
@@ -403,7 +430,7 @@ class _Uploader extends State<Uploader> {
                             value: true,
                             textOn: 'Emotional',
                             textOff: 'Not-Selected',
-                            colorOn: Color(0xffff8082),
+                            colorOn: Color(0xffff6aa00),
                             colorOff: Color(0xffc8c8cb),
                             iconOn: Icons.favorite_border_rounded,
                             iconOff: Icons.favorite_border_rounded,
@@ -461,6 +488,7 @@ class _Uploader extends State<Uploader> {
                         child: RoundedLoadingButton(
                           child: const Text('Done',
                               style: TextStyle(color: Colors.white)),
+                          color: Color(0xffff8082),
                           controller: _btnController,
                           onPressed: () => _doSomethingkj(
                               Cultural, Physical, Emotional, Position),
@@ -505,7 +533,14 @@ class _Uploader extends State<Uploader> {
     final String imgString = base64String;
     final String description = descriptionController.text;
     final String person = personController.text;
-    final String location = locationController.text;
+    final String comment1 = commentController1.text;
+    final String comment2 = commentController2.text;
+    final String comment3 = commentController3.text;
+    final String comment4 = commentController4.text;
+    final String comment5 = commentController5.text;
+    final String comment6 = commentController6.text;
+    final String comment7 = commentController7.text;
+    // final String location = locationController.text;
     // final String text3 = text;
     final String boolValue = boolVal.toString();
     final String boolPhy = pressAttentionPhysical.toString();
@@ -519,6 +554,14 @@ class _Uploader extends State<Uploader> {
                 img_string: imgString,
                 person: person,
                 description: description,
+                comment1: comment1,
+                comment2: comment2,
+                comment3: comment3,
+                comment4: comment4,
+                comment5: comment5,
+                comment6: comment6,
+                comment7: comment7,
+
                 // location: location,
                 Phy: boolPhy,
                 Emo: boolEmo,
@@ -541,15 +584,30 @@ class PostForm extends StatelessWidget {
   final imageFile;
   final TextEditingController personController;
   final TextEditingController descriptionController;
-  final TextEditingController locationController;
+  final TextEditingController commentController1;
+  final TextEditingController commentController2;
+  final TextEditingController commentController3;
+  final TextEditingController commentController4;
+  final TextEditingController commentController5;
+  final TextEditingController commentController6;
+  final TextEditingController commentController7;
+  // final TextEditingController locationController;
   final bool loading;
   // ignore: use_key_in_widget_constructors
-  const PostForm(
-      {this.imageFile,
-      required this.personController,
-      required this.descriptionController,
-      required this.loading,
-      required this.locationController});
+  const PostForm({
+    this.imageFile,
+    required this.personController,
+    required this.descriptionController,
+    required this.commentController1,
+    required this.commentController2,
+    required this.commentController3,
+    required this.commentController4,
+    required this.commentController5,
+    required this.commentController6,
+    required this.commentController7,
+    required this.loading,
+    // required this.locationController
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -578,7 +636,7 @@ class PostForm extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: ListTile(
             shape: RoundedRectangleBorder(
-              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              side: BorderSide(width: 4, color: Color(0xffff8082)), //ピンク色の枠
               borderRadius: BorderRadius.circular(10),
             ),
             leading: const Icon(Icons.title_rounded),
@@ -597,7 +655,7 @@ class PostForm extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: ListTile(
             shape: RoundedRectangleBorder(
-              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              side: BorderSide(width: 4, color: Color(0xffff8082)), //ピンク色の枠
               borderRadius: BorderRadius.circular(10),
             ),
             leading: const Icon(Icons.comment_bank), //コメントのアイコン
@@ -607,6 +665,142 @@ class PostForm extends StatelessWidget {
                 controller: descriptionController, //"コメント"の入力
                 decoration: const InputDecoration(
                     hintText: "Write a comment", border: InputBorder.none),
+              ),
+            ),
+          ),
+        ),
+
+        // comment ------------------------
+
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              borderRadius: BorderRadius.circular(10),
+            ),
+            leading: const Icon(Icons.people), //コメントのアイコン
+            title: SizedBox(
+              width: 250.0,
+              child: TextField(
+                controller: commentController1, //"コメント"の入力
+                decoration: const InputDecoration(
+                    hintText: "Write a word", border: InputBorder.none),
+              ),
+            ),
+          ),
+        ),
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              borderRadius: BorderRadius.circular(10),
+            ),
+            leading: const Icon(Icons.people), //コメントのアイコン
+            title: SizedBox(
+              width: 250.0,
+              child: TextField(
+                controller: commentController2, //"コメント"の入力
+                decoration: const InputDecoration(
+                    hintText: "Write a word", border: InputBorder.none),
+              ),
+            ),
+          ),
+        ),
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              borderRadius: BorderRadius.circular(10),
+            ),
+            leading: const Icon(Icons.people), //コメントのアイコン
+            title: SizedBox(
+              width: 250.0,
+              child: TextField(
+                controller: commentController3, //"コメント"の入力
+                decoration: const InputDecoration(
+                    hintText: "Write a word", border: InputBorder.none),
+              ),
+            ),
+          ),
+        ),
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              borderRadius: BorderRadius.circular(10),
+            ),
+            leading: const Icon(Icons.people), //コメントのアイコン
+            title: SizedBox(
+              width: 250.0,
+              child: TextField(
+                controller: commentController4, //"コメント"の入力
+                decoration: const InputDecoration(
+                    hintText: "Write a word", border: InputBorder.none),
+              ),
+            ),
+          ),
+        ),
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              borderRadius: BorderRadius.circular(10),
+            ),
+            leading: const Icon(Icons.people), //コメントのアイコン
+            title: SizedBox(
+              width: 250.0,
+              child: TextField(
+                controller: commentController5, //"コメント"の入力
+                decoration: const InputDecoration(
+                    hintText: "Write a word", border: InputBorder.none),
+              ),
+            ),
+          ),
+        ),
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              borderRadius: BorderRadius.circular(10),
+            ),
+            leading: const Icon(Icons.people), //コメントのアイコン
+            title: SizedBox(
+              width: 250.0,
+              child: TextField(
+                controller: commentController6, //"コメント"の入力
+                decoration: const InputDecoration(
+                    hintText: "Write a word", border: InputBorder.none),
+              ),
+            ),
+          ),
+        ),
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 4, color: Color(0xffffcabf)), //ピンク色の枠
+              borderRadius: BorderRadius.circular(10),
+            ),
+            leading: const Icon(Icons.people), //コメントのアイコン
+            title: SizedBox(
+              width: 250.0,
+              child: TextField(
+                controller: commentController7, //"コメント"の入力
+                decoration: const InputDecoration(
+                    hintText: "Write a word", border: InputBorder.none),
               ),
             ),
           ),

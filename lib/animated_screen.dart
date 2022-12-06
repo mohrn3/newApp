@@ -49,7 +49,7 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
                   Padding(
                     padding: const EdgeInsets.only(left: 30.0, right: 30.0),
                     child: Text(
-                      "Save your thoughts, impressions and emotions together with the photo to look back anytime.",
+                      "Save your thoughts, impressions and emotions together with the photo to look back anytime",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 14,
