@@ -111,11 +111,11 @@ class _Uploader extends State<Uploader> {
                           ),
                         )),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(00, 107, 00, 20),
+                      padding: const EdgeInsets.fromLTRB(0, 107, 0, 20),
 
                       child: Container(
                         padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-                        color: Color(0xffffcabf),
+                        color: Color(0xffff8082),
                         height: 100,
                         // decoration: BoxDecoration(
                         //     gradient: LinearGradient(
@@ -371,8 +371,8 @@ class _Uploader extends State<Uploader> {
                         value: true,
                         textOn: 'Positive',
                         textOff: 'Negative',
-                        colorOn: Colors.red[300],
-                        colorOff: Colors.blue.shade400,
+                        colorOn: Color(0xffff4b00),
+                        colorOff: Color(0xff005aff),
                         iconOn: Icons.thumb_up_sharp,
                         iconOff: Icons.thumb_down,
                         textSize: 8,
@@ -403,8 +403,8 @@ class _Uploader extends State<Uploader> {
                             value: true,
                             textOn: 'Emotional',
                             textOff: 'Not-Selected',
-                            colorOn: Colors.red.shade300,
-                            colorOff: Colors.grey,
+                            colorOn: Color(0xffff8082),
+                            colorOff: Color(0xffc8c8cb),
                             iconOn: Icons.favorite_border_rounded,
                             iconOff: Icons.favorite_border_rounded,
                             textSize: 8,
@@ -422,8 +422,8 @@ class _Uploader extends State<Uploader> {
                             value: true,
                             textOn: 'Physical',
                             textOff: 'Not-Selected',
-                            colorOn: Colors.blue[700],
-                            colorOff: Colors.grey,
+                            colorOn: Color(0xff4dc4ff),
+                            colorOff: Color(0xffc8c8cb),
                             iconOn: Icons.check_box_outline_blank_outlined,
                             iconOff: Icons.check_box_outline_blank_outlined,
                             textSize: 8,
@@ -442,8 +442,8 @@ class _Uploader extends State<Uploader> {
                         value: true,
                         textOn: 'Cultural',
                         textOff: 'Not-Selected',
-                        colorOn: Colors.teal,
-                        colorOff: Colors.grey,
+                        colorOn: Color(0xff03af7a),
+                        colorOff: Color(0xffc8c8cb),
                         iconOn: Icons.circle_outlined,
                         iconOff: Icons.circle_outlined,
                         textSize: 8,
@@ -456,12 +456,15 @@ class _Uploader extends State<Uploader> {
                         //Use of SizedBox
                         height: 30,
                       ),
-                      RoundedLoadingButton(
-                        child: const Text('Done',
-                            style: TextStyle(color: Colors.white)),
-                        controller: _btnController,
-                        onPressed: () => _doSomethingkj(
-                            Cultural, Physical, Emotional, Position),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 18),
+                        child: RoundedLoadingButton(
+                          child: const Text('Done',
+                              style: TextStyle(color: Colors.white)),
+                          controller: _btnController,
+                          onPressed: () => _doSomethingkj(
+                              Cultural, Physical, Emotional, Position),
+                        ),
                       ),
                       const SizedBox(
                         //Use of SizedBox

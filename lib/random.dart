@@ -9,29 +9,39 @@ MaterialColor randomColor() {
 
   switch (ichigo) {
     case 0:
-      // var lightpink = 0xffcabf;
       re = Colors.pink;
       break;
     case 1:
-      // var pink = "0xff8082";
       re = Colors.blue;
       break;
     case 2:
-      // var yellow = "0xffca80";
-      re = Colors.yellow;
+      re = Colors.indigo;
       break;
     case 3:
-      // var red = "0xff4b00";
       re = Colors.cyan;
       break;
     case 4:
-      // var blue = "0x4dc4ff";
-      re = Colors.lightBlue;
+      re = Colors.blueGrey;
       break;
     case 5:
-      // gray
       re = Colors.green;
       break;
+    case 6:
+      re = Colors.brown;
+      break;
+    case 7:
+      re = Colors.deepOrange;
+      break;
+    case 8:
+      re = Colors.deepPurple;
+      break;
+    case 9:
+      re = Colors.green;
+      break;
+    case 10:
+      re = Colors.lime;
+      break;
+
     default:
       print('【異常系】： switch文の引数になりえないデータです。');
       break;
