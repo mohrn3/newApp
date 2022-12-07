@@ -56,13 +56,13 @@ class _Uploader extends State<Uploader> {
                       padding: const EdgeInsets.fromLTRB(00, 50, 0, 40),
                       child: Container(
                         margin: const EdgeInsets.only(
-                            left: 0.0, top: 50.0, right: 0.0, bottom: 0.0),
-                        width: 250,
-                        height: 250,
+                            left: 0.0, top: 70.0, right: 0.0, bottom: 0.0),
+                        width: 280,
+                        height: 230,
                         child: Align(
                           alignment: Alignment.topCenter,
                           child: Image.asset(
-                            'assets/black_name.png',
+                            'assets/cuttie_name.png',
                             fit: BoxFit.contain,
                           ),
                         ),

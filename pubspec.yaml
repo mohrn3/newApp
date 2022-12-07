@@ -112,6 +112,8 @@ flutter:
     - assets/cam.png
     - assets/line.png
     - assets/line3.png
+    - assets/cuttie_name.png
+    - assets/cuttie_logo.png
 
   fonts:
     - family: Noto_Sans_JP
