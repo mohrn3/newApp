@@ -162,106 +162,126 @@ class _CardDesignState extends State<CardDesign> {
                   width: MediaQuery.of(context).size.width * 1.0,
                   height: MediaQuery.of(context).size.height * 0.8,
                   alignment: Alignment.center,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      //image
-                      Neumorphic(
-                        style: NeumorphicStyle(
-                          intensity: 0.6,
-                        ),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.height * 0.45,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: turn, width: 10),
-                              borderRadius: BorderRadius.circular(5),
-                              image: DecorationImage(
-                                  image: Image.memory(
-                                          base64Decode(widget.img_string))
-                                      .image,
-                                  fit: BoxFit.cover)),
-                        ),
-                      ),
-
-                      //icon
-                      Container(
-                        padding: EdgeInsets.fromLTRB(0, 30, 0, 5),
-                        height: 65.0,
-                        child: Stack(
-                          children: <Widget>[
-                            Positioned(
-                                // left → right
-                                right: 120,
-                                child: Container(
-                                  child: showConditionPhysical(),
-                                )),
-                            Positioned(
-                                right: 80,
-                                child: Container(
-                                  child: showConditionCultural(),
-                                )),
-                            Positioned(
-                                right: 40,
-                                child: Container(
-                                  child: showConditionEmotional(),
-                                )),
-                          ],
-                        ),
-                      ),
-
-                      //text
-                      Neumorphic(
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                          width: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.height * 0.15,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            // border: Border.all(color: turn, width: 10),
+                  child: Stack(
+                    children: <Widget>[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // Stack(
+                          //   children: <Widget>[
+                          //image
+                          Neumorphic(
+                            style: NeumorphicStyle(
+                              intensity: 0.6,
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.45,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: turn, width: 10),
+                                  borderRadius: BorderRadius.circular(5),
+                                  image: DecorationImage(
+                                      image: Image.memory(
+                                              base64Decode(widget.img_string))
+                                          .image,
+                                      fit: BoxFit.cover)),
+                            ),
                           ),
-                          alignment: Alignment.centerLeft,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Text(title,
-                                  style: const TextStyle(
-                                    fontFamily: 'Noto_Sans_JP',
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800,
-                                  )),
-                              Divider(
-                                thickness: 1,
-                                color: turn,
+
+                          // //posivive or negative
+                          // Container(
+                          //   child: PostiveNegative(),
+                          // ),
+                          //   ],
+                          // ),
+
+                          //icon
+                          Container(
+                            padding: EdgeInsets.fromLTRB(0, 30, 0, 5),
+                            height: 65.0,
+                            child: Stack(
+                              children: <Widget>[
+                                Positioned(
+                                    // left → right
+                                    right: 120,
+                                    child: Container(
+                                      child: showConditionPhysical(),
+                                    )),
+                                Positioned(
+                                    right: 80,
+                                    child: Container(
+                                      child: showConditionCultural(),
+                                    )),
+                                Positioned(
+                                    right: 40,
+                                    child: Container(
+                                      child: showConditionEmotional(),
+                                    )),
+                              ],
+                            ),
+                          ),
+
+                          //text
+                          Neumorphic(
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.15,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5),
+                                // border: Border.all(color: turn, width: 10),
                               ),
-                              Text(supportingText,
-                                  style: const TextStyle(
-                                    fontFamily: 'Noto_Sans_JP',
-                                    color: Colors.black,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                  )),
-                            ],
+                              alignment: Alignment.centerLeft,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  Text(title,
+                                      style: const TextStyle(
+                                        fontFamily: 'Noto_Sans_JP',
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w800,
+                                      )),
+                                  Divider(
+                                    thickness: 1,
+                                    color: turn,
+                                  ),
+                                  Text(supportingText,
+                                      style: const TextStyle(
+                                        fontFamily: 'Noto_Sans_JP',
+                                        color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                      )),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+
+                          // //date
+                          // Container(
+                          //   padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                          //   width: MediaQuery.of(context).size.width * 0.8,
+                          //   alignment: Alignment.centerLeft,
+                          //   child: Text(formattedDate1,
+                          //       style: const TextStyle(
+                          //         fontFamily: '',
+                          //         color: Colors.black,
+                          //         fontSize: 13,
+                          //       )),
+                          // )
+                        ],
                       ),
 
-                      // //date
-                      // Container(
-                      //   padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                      //   width: MediaQuery.of(context).size.width * 0.8,
-                      //   alignment: Alignment.centerLeft,
-                      //   child: Text(formattedDate1,
-                      //       style: const TextStyle(
-                      //         fontFamily: '',
-                      //         color: Colors.black,
-                      //         fontSize: 13,
-                      //       )),
-                      // )
+                      //posivive or negative
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        child: PostiveNegative(),
+                      ),
                     ],
                   ),
                 ),
@@ -608,9 +628,17 @@ class _CardDesignState extends State<CardDesign> {
 
   PostiveNegative() {
     if (widget.posNeg == "true") {
-      return Icon(Icons.circle, color: Colors.orange);
+      return Icon(
+        Icons.thumb_up_alt,
+        color: Color(0xffff4b00),
+        size: 80,
+      );
     } else {
-      return Icon(Icons.circle, color: Colors.purple);
+      return Icon(
+        Icons.thumb_down_alt,
+        color: Color(0xff005aff),
+        size: 80,
+      );
     }
   }
 
