@@ -54,8 +54,10 @@ class _Uploader extends State<Uploader> {
                         height: 250,
                         child: Align(
                           alignment: Alignment.topCenter,
+                          
                           child: Image.asset(
-                            'assets/black_name.png',
+                            
+                            'assets/cuttie_icon.png',
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -103,10 +105,10 @@ class _Uploader extends State<Uploader> {
                                 // FadeAnimatedText('do it RIGHT NOW!!!'),
                                 // RotateAnimatedText('Hello!'),
                                 RotateAnimatedText(
-                                    'Welcome to NOKOSU Application.'),
-                                RotateAnimatedText('NOKOSUアプリケーションへようこそ。'),
-                                RotateAnimatedText('NOKOSU 앱에 오신 것을 환영합니다. '),
-                                RotateAnimatedText('欢迎使用 NOKOSU 应用程序。'),
+                                    'Welcome to CUTTIE Application.'),
+                                RotateAnimatedText('CUTTIEアプリケーションへようこそ。'),
+                                RotateAnimatedText('CUTTIE 앱에 오신 것을 환영합니다. '),
+                                RotateAnimatedText('欢迎使用 CUTTIE 应用程序。'),
                               ],
                             ),
                           ),
@@ -115,10 +117,10 @@ class _Uploader extends State<Uploader> {
                       padding: const EdgeInsets.fromLTRB(0, 107,0, 20),
 
                       child: Container(
-                        padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                        padding: const EdgeInsets.fromLTRB(60, 15, 60, 15),
                         // color: Color(0xffffcabf),
                         height: 100,
-                        width: 300,
+                        width: 600,
                         child: IntrinsicHeight(
                           child: Row(//水平に並べる
                           
@@ -135,7 +137,11 @@ class _Uploader extends State<Uploader> {
                           children: [
                       ElevatedButton.icon(
                       icon: Icon(Icons.camera_alt),  //icon data for elevated button
-                      label: Text("Take a Photo"), //label text 
+                      label: Text(
+                        "Camera" 
+                                                //overflow:TextOverflow.ellipsis, 
+                      ), //label text 
+                    
                       
                         
               
@@ -153,7 +159,7 @@ class _Uploader extends State<Uploader> {
                         ),
 
                   ),
-                  SizedBox(width:50),//ボックスの間隔
+                  SizedBox(width:30),//ボックスの間隔
                       Expanded(
 
                       child: ElevatedButton.icon(
@@ -162,7 +168,7 @@ class _Uploader extends State<Uploader> {
                                           size: 25,
                                           color: Colors.white,
                                         ),  //icon data for elevated button
-                      label: Text("Select from gallery"), //label text 
+                      label: Text("Gallery"), //label text 
                       style: ElevatedButton.styleFrom(
                           primary: Colors.black,
                           onPrimary: Colors.white,
@@ -523,7 +529,7 @@ class _Uploader extends State<Uploader> {
     });
   }
 }
-
+/*
 class PostForm extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   // final imageFile;
@@ -573,6 +579,7 @@ class PostForm extends StatelessWidget {
           title: SizedBox(
             width: 250.0,
             child: TextField(
+              
               controller: personController,//"人"のコメント入力
               decoration: const InputDecoration(
                   hintText: "Display name", border: InputBorder.none),
@@ -621,7 +628,10 @@ class PostForm extends StatelessWidget {
             
             ,
           ],
-        ),*/
+        ),
+        
+        
+        */
         const Divider(),
         ListTile(
           shape: RoundedRectangleBorder(
@@ -652,6 +662,129 @@ class PostForm extends StatelessWidget {
           ),
         )
         */
+      ],
+    );
+  }
+}
+*/
+class PostForm extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
+  // final imageFile;
+  final imageFile;
+  final TextEditingController personController;
+  final TextEditingController descriptionController;
+  final TextEditingController locationController;
+  final bool loading;
+  // ignore: use_key_in_widget_constructors
+  const PostForm(
+      {this.imageFile,
+      required this.personController,
+      required this.descriptionController,
+      required this.loading,
+      required this.locationController});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        loading
+            ? const LinearProgressIndicator()
+            : const Padding(padding: EdgeInsets.only(top: 0.0)),
+        const Divider(),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(00, 30, 0, 10),
+          child: Container(
+            // height: 10,
+            height: MediaQuery.of(context).size.height * 0.3,
+            width: MediaQuery.of(context).size.width * 0.5,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              // fit: BoxFit.fill,
+              
+              alignment: FractionalOffset.center,
+              image: FileImage(imageFile),
+            )),
+          ),
+        ),
+        const Divider(),
+        ListTile(
+            shape: RoundedRectangleBorder(
+            side: BorderSide(width: 5,color: Color(0xffffcabf)),//ピンク色の枠
+            borderRadius: BorderRadius.circular(10),
+          ),
+          leading: const Icon(Icons.person),
+          iconColor:Colors.white70,
+          title: SizedBox(
+            width: 250.0,
+            child: TextField(
+              controller: personController,
+              decoration: const InputDecoration(
+                  hintText: "Display name", border: InputBorder.none),
+            ),
+          ),
+        ),
+        const Divider(),
+        /*
+        Row(
+          
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            // CircleAvatar(
+            //   backgroundImage:
+            //       Image.network(model.userDetails!.photoURL ?? "").image,
+            //   radius: 20,
+            // ),
+            SizedBox(
+                width: 250.0,
+              child: TextField(
+                
+                maxLines: null,
+                controller: descriptionController,
+                decoration: const InputDecoration(
+                    hintText: "Write a comment...", border: InputBorder.none),//コメント
+              ),
+            ),
+          ],
+        ),
+        */
+              ListTile(
+
+          shape: RoundedRectangleBorder(
+            side: BorderSide(width: 5,color: Color(0xffffcabf)),//ピンク色の枠
+            borderRadius: BorderRadius.circular(10),
+          ),
+          leading: const Icon(Icons.comment_bank),//コメントのアイコン
+          title: SizedBox(
+            width: 250.0,
+            height: 100.0,
+            child: TextField(
+              maxLines:null,
+              controller: descriptionController,
+              //controller:TextEditingController(text:null),
+              decoration: const InputDecoration(
+                  hintText: "Write a comment", border: InputBorder.none),
+            ),
+          ),
+        ),
+        const Divider(),
+        ListTile(
+           shape: RoundedRectangleBorder(
+            side: BorderSide(width: 5,color: Color(0xffffcabf)),//ピンク色の枠
+            borderRadius: BorderRadius.circular(10),
+          ),
+          leading: const Icon(Icons.pin_drop),
+          title: SizedBox(
+            width: 250.0,
+            
+            child: TextField(
+              maxLines:null,
+              controller: locationController,
+              decoration: const InputDecoration(
+                  hintText: "Where was this photo taken?", //場所
+                  border: InputBorder.none),
+            ),
+          ),
+        )
       ],
     );
   }

@@ -7,6 +7,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:newnokosuios/image_picker.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
@@ -226,6 +227,9 @@ class _CardDesignState extends State<CardDesign> {
                           fontFamily: 'RobotoMono',
                           color: Colors.black,
                           fontSize: 13,
+
+
+                          
                         )),
                   ),
                 ),
@@ -317,8 +321,7 @@ class _CardDesignState extends State<CardDesign> {
       );
     }
   }
-
-  Future<void> _captureSocialPng1() {
+Future<void> _captureSocialPng1() {
     List<String> imagePaths = [];
     final RenderBox box = context.findRenderObject() as RenderBox;
     return new Future.delayed(const Duration(milliseconds: 20), () async {
@@ -334,15 +337,84 @@ class _CardDesignState extends State<CardDesign> {
       Uint8List pngBytes = byteData!.buffer.asUint8List();
 
       File imgFile = new File('$directory/nokosu_${DateTime.now()}.png');
+
       imagePaths.add(imgFile.path);
       imgFile.writeAsBytes(pngBytes).then((value) async {
-        await Share.shareFiles(imagePaths,
-            subject: 'Share',
-            text: 'Check this Out!',
-            sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+        await ImageGallerySaver.saveImage(Uint8List.fromList(pngBytes),
+            quality: 100, name: 'nokosu-${DateTime.now()}.png');
       }).catchError((onError) {
         print(onError);
-      });
+      }).whenComplete(() => showAlertDialog(context));
+
+      // File imgFile = new File('$directory/nokosu_${DateTime.now()}.png');
+      // imagePaths.add(imgFile.path);
+      // imgFile.writeAsBytes(pngBytes).then((value) async {
+      //   await Share.shareFiles(imagePaths,
+      //       subject: 'Share',
+      //       text: 'Check this Out!',
+      //       sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+      // }).catchError((onError) {
+      //   print(onError);
+      // });
     });
   }
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      style: TextButton.styleFrom(
+        primary: Colors.black,
+      ),
+      onPressed: () {
+        //Put your code here which you want to execute on No button click.
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      // title: Text("AlertDialog"),
+      content: Text("Image sucessfully saved in Gallery."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  // Future<void> _captureSocialPng1() {
+  //   List<String> imagePaths = [];
+  //   final RenderBox box = context.findRenderObject() as RenderBox;
+  //   return new Future.delayed(const Duration(milliseconds: 20), () async {
+  //     RenderRepaintBoundary? boundary = previewContainer.currentContext!
+  //         .findRenderObject() as RenderRepaintBoundary?;
+
+  //     ui.Image image = await boundary!.toImage(pixelRatio: 2.0);
+
+  //     final directory = (await getApplicationDocumentsDirectory()).path;
+
+  //     ByteData? byteData =
+  //         await image.toByteData(format: ui.ImageByteFormat.png);
+  //     Uint8List pngBytes = byteData!.buffer.asUint8List();
+
+  //     File imgFile = new File('$directory/nokosu_${DateTime.now()}.png');
+  //     imagePaths.add(imgFile.path);
+  //     imgFile.writeAsBytes(pngBytes).then((value) async {
+  //       await Share.shareFiles(imagePaths,
+  //           subject: 'Share',
+  //           text: 'Check this Out!',
+  //           sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+  //     }).catchError((onError) {
+  //       print(onError);
+  //     });
+  //   });
+  // }
 }

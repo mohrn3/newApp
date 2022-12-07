@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:newnokosuios/animated_screen.dart';
-import 'package:newnokosuios/image_picker.dart';
 
 // @dart=2.9
 
@@ -29,10 +28,10 @@ class SplashPage extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        color: Colors.white,
+         color: Colors.white,
         child: AnimatedSplashScreen(
           splash: const ImageIcon(
-            AssetImage("assets/black_name.png"),
+            AssetImage('assets/mainlogo.png'),
             size: 500.0,
           ),
           nextScreen: const AnimatedScreen(),
