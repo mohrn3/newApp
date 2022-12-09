@@ -26,12 +26,12 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 30.0,
+                    height: 20.0,
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: Image.asset('assets/comment.png'),
+                    width: MediaQuery.of(context).size.width * 1.0,
+                    child: Image.asset('assets/c_comment.jpg'),
                   ),
                   SizedBox(
                     height: 30.0,
@@ -91,12 +91,12 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 30.0,
+                    height: 20.0,
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: Image.asset('assets/selection.png'),
+                    width: MediaQuery.of(context).size.width * 1.0,
+                    child: Image.asset('assets/c_selection.jpg'),
                   ),
                   SizedBox(
                     height: 30.0,
@@ -158,12 +158,13 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 30.0,
+                    height: 20.0,
                   ),
                   Container(
+                    padding: EdgeInsets.only(left: 15),
                     height: MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: Image.asset('assets/card.png'),
+                    width: MediaQuery.of(context).size.width * 1.0,
+                    child: Image.asset('assets/c_card.jpg'),
                   ),
                   SizedBox(
                     height: 30.0,
