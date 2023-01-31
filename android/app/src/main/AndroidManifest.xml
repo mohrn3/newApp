@@ -2,7 +2,7 @@
     package="com.example.newnokosuios">
     <application 
         android:requestLegacyExternalStorage="true" 
-        android:label="Nokosu"
+        android:label="Cuttie"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

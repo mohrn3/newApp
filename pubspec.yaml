@@ -65,6 +65,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_neumorphic: ^3.2.0
+
+  repro_flutter: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -109,6 +112,29 @@ flutter:
     - assets/fun.png
     - assets/gal.png
     - assets/cam.png
+    - assets/line.png
+    - assets/line3.png
+    - assets/cuttie_name.png
+    - assets/cuttie_logo.png
+    - assets/c_comment.jpg
+    - assets/c_selection.jpg
+    - assets/c_card.jpg
+
+  fonts:
+    - family: Noto_Sans_JP
+      fonts:
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Black.otf
+          weight: 800
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Bold.otf
+          weight: 600
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Light.otf
+          weight: 500
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Medium.otf
+          weight: 400
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Regular.otf
+          weight: 200
+        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Thin.otf
+          weight: 100
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

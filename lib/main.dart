@@ -31,14 +31,19 @@ class SplashPage extends StatelessWidget {
       body: Container(
         color: Colors.white,
         child: AnimatedSplashScreen(
-          splash: const ImageIcon(
-            AssetImage("assets/black_name.png"),
-            size: 500.0,
+          // splash: const ImageIcon(
+          splash: Container(
+            width: 500,
+            child: Image.asset(
+              'assets/cuttie_name.png',
+            ),
           ),
+          //   size: 500.0,
+          // ),
           nextScreen: const AnimatedScreen(),
           splashTransition: SplashTransition.fadeTransition,
           splashIconSize: 200.0,
-          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.transparent,
           duration: 1550,
         ),
       ),
